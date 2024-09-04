@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page-intro">
+    <div class="wrapper" onclick="goToNextPage()">
+        <img src="./img/logo.png" width="250px" class="animate__animated animate__bounceIn" />
+    </div>
+</body>
+<script>
+    function goToNextPage() {
+        const wrapper = document.querySelector('.animate__animated');
+        wrapper.classList.add('animate__bounceOut');
+        wrapper.addEventListener('animationend', function() {
+            window.location.href = 'intro-form.html';
+        });
+    }
+</script>
+</html>
