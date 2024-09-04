@@ -274,3 +274,122 @@ body, html {
     }
 
 }
+
+/*
+                              #   
+ ####  ##### ###### #####    ##   
+#        #   #      #    #  # #   
+ ####    #   #####  #    #    #   
+     #   #   #      #####     #   
+#    #   #   #      #         #   
+ ####    #   ###### #       ##### 
+*/
+.page-step1 {
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .img-text { 
+        width: 100%;
+    }
+    .shelf { 
+        max-width: 400px;
+        height: 400px;
+        width: 500px;
+        background-image: url(./img/shelf.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        margin: 80px auto 0;
+    }
+    .shelf-item {
+        display: flex;
+        justify-content: space-evenly;
+        &:nth-child(1) { 
+            top: -70px;
+            position: relative;
+        }
+        &:nth-child(2) { 
+            top: -40px;
+            position: relative;
+        }
+        &:nth-child(3) { 
+            top: -20px;
+            position: relative;
+        }
+        &:nth-child(4) { 
+            top: -10px;
+            position: relative;
+        }
+        img { 
+            width: 145px
+        }
+    } 
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 130px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    .active-bowl,.active-effect { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 233px;
+        transform: translate(-50%, 0);
+    }
+    .active-effect { 
+        width: 80px;
+        bottom: 330px;
+        display: none;
+    }
+    @media only screen and (max-width: 375px) {
+
+        .shelf { 
+            max-width: 300px;
+            height: 300px;
+            width: 400px;
+            margin: 50px auto 0;
+        }
+        .shelf-item {
+            &:nth-child(1) { 
+                top: -48px;
+                position: relative;
+            }
+            &:nth-child(2) { 
+                top: -20px;
+                position: relative;
+            }
+            &:nth-child(3) { 
+                top: -4px;
+                position: relative;
+            }
+            &:nth-child(4) { 
+                top: 14px;
+                position: relative;
+            }
+            img { 
+                width: 100px
+            }
+        } 
+        .active-bowl,.active-effect { 
+            width: 140px;
+            bottom: 190px;
+        }
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
+        }
+
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
+}

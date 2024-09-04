@@ -13,14 +13,17 @@
         
         <img src="./img/text.png" class="img-text animate__animated animate__bounceIn"/>
 
-        <button class="btn-submit">
+        <button class="btn-submit" onclick="goToNextPage()">  
             <img src="./img/next-btn.png" />
         </button>
-
     </div>
     <img src="./img/sink-grid.png"  class="bg-sink" />
     <img src="./img/spoon.png"  class="bg-spoon" />
 
 </body>
-
+<script>
+    function goToNextPage() {
+        window.location.href = 'step1.html';
+    }
+</script>
 </html>

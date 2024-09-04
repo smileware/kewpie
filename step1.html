@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page page-step1">
+    <div class="wrapper" >
+        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
+        <img src="./img/text-2.png" class="img-text animate__animated animate__bounceIn" />
+        
+        <div class="shelf">
+            <div class="shelf-item">
+                <img src="./img/bowl-1.png" id="bowl-1" />
+                <img src="./img/bowl-2.png" id="bowl-2" />
+            </div>
+            <div class="shelf-item">
+                <img src="./img/bowl-3.png" id="bowl-3" />
+                <img src="./img/bowl-4.png" id="bowl-4" />
+            </div>
+            <div class="shelf-item">
+                <img src="./img/bowl-5.png" id="bowl-5" />
+                <img src="./img/bowl-6.png" id="bowl-6" />
+            </div>
+            <div class="shelf-item">
+                <img src="./img/bowl-7.png" id="bowl-7" />
+                <img src="./img/bowl-8.png" id="bowl-8" />
+            </div>
+        </div>
+
+        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
+        <img src="" id="activeBowl" class="active-bowl">
+
+        <button class="btn-submit">
+            <img src="./img/next-btn.png" />
+        </button>
+
+    </div>
+    <img src="./img/sink-grid.png"  class="bg-sink" />
+</body>
+<script>
+    const images = document.querySelectorAll('.shelf img');
+    const activeBowlImg = document.getElementById('activeBowl'); // The target bowl image
+    const activeEffect = document.getElementById('activeEffect'); // The animation effect
+
+    images.forEach(function(image) {
+        image.addEventListener('click', function() {
+            const imageId = this.id;
+
+            const newSrc = `./img/${imageId}-active.png`;
+            activeBowlImg.src = newSrc;
+
+            if (newSrc) {
+                activeEffect.style.display = 'block'; // Show animation effect
+            }
+        });
+    });
+</script>
+</html>
