@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./img/fav.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page page-order1">
+    <div class="wrapper" >
+        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
+
+        <img src="./img/text-4.png" class="img-text animate__animated animate__bounceIn" style="margin-top: 40px;" />
+
+
+        <img src="" id="activeBowl" class="active-bowl">
+
+        <button class="btn-submit" onclick="goToNextPage()">
+            <img src="./img/next-btn.png" />
+        </button>
+    </div>
+</body>
+<img src="./img/sink-grid.png"  class="bg-sink" />
+<script>
+    const activeMenu = document.getElementById('activeBowl');
+    let formData = sessionStorage.getItem('formData');
+
+    if (formData) {
+        formData = JSON.parse(formData);
+
+        var bowlId = formData['bowl'];
+        var menuId = formData['menu'];
+        
+        if( bowlId && menuId) {
+
+            bowlId = bowlId.charAt(bowlId.length - 1);
+            menuId = menuId.charAt(menuId.length - 1);
+
+            const newSrc = `./img/menu-${menuId}-${bowlId}.png`;
+
+            activeMenu.src = newSrc;
+
+        }else { 
+            window.location.href = 'step1.html';
+        }
+        
+    }else { 
+        window.location.href = 'intro-form.html';
+    }
+    
+    function goToNextPage() {
+        window.location.href = 'order2.html';
+    }
+</script>
+</html>

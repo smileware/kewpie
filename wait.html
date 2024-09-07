@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./img/fav.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page page-wait">
+    <div class="wrapper" >
+        <img src="./img/wait-top.png" class="top-sink" />
+
+        <h3 class="timer-wrapper">
+            รอความอร่อยอีก  <span class="timer" id="countdown"></span> นาที
+        </h3>
+
+
+        <img src="./img/wait-dish.png" class="wait-dish" id="rotatingImage" />
+            
+        <button class="btn-submit" onclick="goToNextPage()" id="nextButton" style="opacity: 0;">
+            <img src="./img/next-btn.png" />
+        </button>
+    </div>
+</body>
+<img src="./img/wait-sink.png"  class="bg-sink" />
+
+
+<script>
+    const countdownDuration = 10; // 10 seconds
+    var isClick = false;
+
+    function initializeCountdown() {
+        const now = new Date().getTime();
+        const endTime = now + countdownDuration * 1000; // Calculate the end time
+
+        localStorage.setItem('endTime', endTime);
+        updateCountdown(); // Immediately update the countdown
+    }
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const endTime = localStorage.getItem('endTime');
+
+        if (!endTime) {
+            initializeCountdown();
+            return;
+        }
+
+        const timeLeft = Math.floor((endTime - now) / 1000);
+
+        if (timeLeft <= 0) {
+            document.getElementById("countdown").innerHTML = "00:00";
+            localStorage.removeItem('endTime');
+
+            document.getElementById("nextButton").style.opacity = "1"; 
+            isClick = true;
+            return;
+        }
+
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+
+        const formattedTime = 
+            (minutes < 10 ? "0" : "") + minutes + ":" + 
+            (seconds < 10 ? "0" : "") + seconds;
+
+        document.getElementById("countdown").innerHTML = formattedTime;
+
+        // Set the next countdown update to run after 1 second
+        setTimeout(updateCountdown, 1000 - (new Date().getTime() - now));
+
+    }
+
+    // Initialize the countdown when the script runs
+    initializeCountdown();
+
+    function goToNextPage() {
+        if (isClick) { 
+            window.location.href = 'final1.html'; // Replace with your actual URL
+        }
+    }
+</script>
+</html>

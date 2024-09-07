@@ -257,9 +257,10 @@ body, html {
     }
     .bg-spoon { 
         padding: 0px 20px;
-        width: 200px;
+        width: 300px;
         left: 50%;
         transform: translate(-50%, 0);
+        bottom: -30px;
     }
     .img-text { 
         width: 100%;
@@ -388,6 +389,470 @@ body, html {
             display: none;
         }
 
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
+}
+
+/*
+                            #####  
+ ####  ##### ###### #####  #     # 
+#        #   #      #    #       # 
+ ####    #   #####  #    #  #####  
+     #   #   #      #####  #       
+#    #   #   #      #      #       
+ ####    #   ###### #      ####### 
+*/
+.page-step2 {
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .img-text { 
+        width: 100%;
+    }
+    .menu-wrapper { 
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        img { 
+            height: 145px;
+            width: auto;
+            min-width: 50%;
+            object-fit: contain;
+            &:nth-child(3) { 
+                margin-top: -50px;
+            }
+        }
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 130px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    .active-bowl,.active-effect { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 233px;
+        transform: translate(-50%, 0);
+    }
+    .active-effect { 
+        width: 80px;
+        bottom: 330px;
+        display: none;
+    }
+    @media only screen and (max-width: 375px) {
+        .active-bowl,.active-effect { 
+            width: 140px;
+            bottom: 190px;
+        }
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
+        }
+
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
+}
+
+/*
+                                      #   
+ ####  #####  #####  ###### #####    ##   
+#    # #    # #    # #      #    #  # #   
+#    # #    # #    # #####  #    #    #   
+#    # #####  #    # #      #####     #   
+#    # #   #  #    # #      #   #     #   
+ ####  #    # #####  ###### #    #  ##### 
+*/
+.page-order1 {
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .img-text { 
+        width: 100%;
+    }
+    .active-bowl { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 233px;
+        transform: translate(-50%, 0);
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 130px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    @media only screen and (max-width: 375px) {
+        .active-bowl { 
+            width: 140px;
+            bottom: 190px;
+        }
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
+}
+
+/*
+                                    #####  
+ ####  #####  #####  ###### #####  #     # 
+#    # #    # #    # #      #    #       # 
+#    # #    # #    # #####  #    #  #####  
+#    # #####  #    # #      #####  #       
+#    # #   #  #    # #      #   #  #       
+ ####  #    # #####  ###### #    # ####### 
+*/
+.page-order2 {
+    .logo { 
+        width: 150px;
+    }
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .img-text { 
+        width: 100%;
+    }
+    .active-bowl,.active-effect { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 233px;
+        transform: translate(-50%, 0);
+    }
+    .active-effect { 
+        width: 80px;
+        bottom: 330px;
+        display: none;
+    }
+    .inner {
+        position: relative;
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: -40px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    @media only screen and (max-width: 375px) {
+        .active-bowl,.active-effect { 
+            width: 140px;
+            bottom: 190px;
+        }
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
+        }
+    }
+}
+
+/*
+    #    #   ##   # ##### 
+    #    #  #  #  #   #   
+    #    # #    # #   #   
+    # ## # ###### #   #   
+    ##  ## #    # #   #   
+    #    # #    # #   #   
+*/
+.page-wait {
+    > .wrapper { 
+        padding-top: 0;
+    }
+    .top-sink { 
+        width: 100%;
+    }
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    .timer-wrapper { 
+        font-size: 22px;
+        margin-top: 0;
+        color: white;
+        .timer { 
+            background-color: black;
+            padding: 0 10px;
+            border-radius: 50px;
+        }
+    }
+    .wait-dish { 
+        width: 240px;
+        transform-origin: center;
+        animation: tickTock 2s infinite alternate ease-in-out;
+        @keyframes tickTock {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(-25deg);
+            }
+        }
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 75px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    @media only screen and (max-width: 375px) {
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
+        }
+        .btn-submit { 
+            bottom: 40px;
+        }
+        .wait-dish { 
+            width: 160px;
+            position: relative;
+            top: -50px;
+        }
+    }
+}
+
+
+/*
+                                     #   
+    ###### # #    #   ##   #        ##   
+    #      # ##   #  #  #  #       # #   
+    #####  # # #  # #    # #         #   
+    #      # #  # # ###### #         #   
+    #      # #   ## #    # #         #   
+    #      # #    # #    # ######  ##### 
+*/
+.page-final1 {
+    .img-text { 
+        width: 100%;
+    }
+    .inner {
+        position: relative;
+        padding: 0 30px;
+    }
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: -80px;
+        width: 100%;
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: -40px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    .active-bowl { 
+        width: 240px;
+        position: absolute;
+        left: 50%;
+        bottom: 150px;
+        transform: translate(-50%, 0);
+    }
+    @media only screen and (max-width: 375px) {
+        .active-bowl { 
+            width: 130px;
+            bottom: 112px;
+        }
+    }
+}
+
+/*
+                                   #####  
+    ###### # #    #   ##   #      #     # 
+    #      # ##   #  #  #  #            # 
+    #####  # # #  # #    # #       #####  
+    #      # #  # # ###### #      #       
+    #      # #   ## #    # #      #       
+    #      # #    # #    # ###### ####### 
+*/
+
+.page-final2 {
+    .img-text { 
+        width: 100%;
+    }
+    .inner {
+        position: relative;
+        padding: 0 30px;
+    }
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: -40px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+
+    .active-text { 
+        width: 100%;
+        margin-top: 20px;
+    }
+    .active-bowl,
+    .active-effect { 
+        width: calc(100% - 20px);
+        position: absolute;
+        left: 50%;
+        bottom: 220px;
+        transform: translate(-50%, 0);
+    }
+    .active-effect { 
+        width: 160px;
+        bottom: 430px;
+    }
+
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 130px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+   
+    @media only screen and (max-width: 375px) {
+        .active-bowl,
+        .active-effect { 
+            width: calc(100% - 90px);
+            position: absolute;
+            left: 50%;
+            bottom: 170px;
+            transform: translate(-50%, 0);
+        }
+        .active-effect { 
+            width: 110px;
+            bottom: 340px;
+        }
+    
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
+}
+
+
+/*
+                                   #####  
+    ###### # #    #   ##   #      #     # 
+    #      # ##   #  #  #  #            # 
+    #####  # # #  # #    # #       #####  
+    #      # #  # # ###### #            # 
+    #      # #   ## #    # #      #     # 
+    #      # #    # #    # ######  #####  
+*/
+
+
+.page-final3 {
+    .logo { 
+        width: 150px;
+    }
+    .bg-sink { 
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+    }
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: -40px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+    .active-text { 
+        width: 100%;
+    }
+    .active-bowl,
+    .active-effect { 
+        width: calc(100% - 20px);
+        position: absolute;
+        left: 50%;
+        bottom: 206px;
+        transform: translate(-50%, 0);
+    }
+    .active-effect { 
+        width: 160px;
+        bottom: 430px;
+    }
+
+    .btn-submit { 
+        background: rgba(0, 0, 0, 0);
+        border: none;
+        position: absolute;
+        left: 50%;
+        bottom: 130px;
+        transform: translate(-50%, 0);
+        img { 
+            width: 280px;
+        }
+    }
+   
+    @media only screen and (max-width: 375px) {
+        .active-bowl,
+        .active-effect { 
+            width: calc(100% - 90px);
+            bottom: 160px;
+            transform: traslate(-50%, 0);
+        }
+    
         .btn-submit { 
             bottom: 80px;
         }

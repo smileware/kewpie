@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./img/fav.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page page-order2">
+    <div class="wrapper" >
+        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
+
+        <div class="inner">
+            <img src="./img/text-5.png" class="img-text animate__animated animate__bounceIn" style="margin-top: 20px;" />
+            <button class="btn-submit" onclick="goToNextPage()">
+                <img src="./img/next-btn.png" />
+            </button>
+        </div>
+
+
+        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
+        <img src="" id="activeBowl" class="active-bowl">
+
+
+        
+    </div>
+</body>
+<img src="./img/sink-top.png"  class="bg-sink bg-sink-top" />
+<img src="./img/sink.png"  class="bg-sink" />
+
+<script>
+    const activeBowlImg = document.getElementById('activeBowl');
+    const activeEffect = document.getElementById('activeEffect'); 
+    let formData = sessionStorage.getItem('formData');
+    let activeBowlNum, activeMenuNum;
+    
+    if (formData) {
+        formData = JSON.parse(formData);
+        const imageId = formData['bowl'];
+
+        if( imageId ) {
+            const newSrc = `./img/${imageId}-active.png`;
+            activeBowlImg.src = newSrc;
+            activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
+
+            if (newSrc) {
+                activeEffect.style.display = 'block'; 
+            }
+
+        }else { 
+            window.location.href = 'step1.html';
+        }
+    }else { 
+        window.location.href = 'intro-form.html';
+    }
+    function goToNextPage() {
+        window.location.href = 'wait.html';
+    }
+</script>
+</html>

@@ -15,27 +15,27 @@
         
         <div class="shelf">
             <div class="shelf-item">
-                <img src="./img/bowl-1.png" id="bowl-1" />
-                <img src="./img/bowl-2.png" id="bowl-2" />
+                <img src="./img/bowl-1.png" id="bowl-1" data-name="อร่อย รสเข้มข้น" />
+                <img src="./img/bowl-2.png" id="bowl-2" data-name="เผ็ดจี๊ดจ๊าด" />
             </div>
             <div class="shelf-item">
-                <img src="./img/bowl-3.png" id="bowl-3" />
-                <img src="./img/bowl-4.png" id="bowl-4" />
+                <img src="./img/bowl-3.png" id="bowl-3" data-name="กลมกล่อม ทานง่าย" />
+                <img src="./img/bowl-4.png" id="bowl-4" data-name="รสเข้มข้น หอมชีส" />
             </div>
             <div class="shelf-item">
-                <img src="./img/bowl-5.png" id="bowl-5" />
-                <img src="./img/bowl-6.png" id="bowl-6" />
+                <img src="./img/bowl-5.png" id="bowl-5" data-name="เปรี้ยวอมหวาน " />
+                <img src="./img/bowl-6.png" id="bowl-6" data-name="จัดจ้าน รสแน่น" />
             </div>
             <div class="shelf-item">
-                <img src="./img/bowl-7.png" id="bowl-7" />
-                <img src="./img/bowl-8.png" id="bowl-8" />
+                <img src="./img/bowl-7.png" id="bowl-7" data-name="เต็มรสเครื่องเทศ" />
+                <img src="./img/bowl-8.png" id="bowl-8" data-name="รสนุ่ม กลิ่นหอม" />
             </div>
         </div>
 
         <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
         <img src="" id="activeBowl" class="active-bowl">
 
-        <button class="btn-submit">
+        <button class="btn-submit" onclick="goToNextPage()">
             <img src="./img/next-btn.png" />
         </button>
 
@@ -53,11 +53,35 @@
 
             const newSrc = `./img/${imageId}-active.png`;
             activeBowlImg.src = newSrc;
+            activeBowlImg.dataset.name = this.dataset.name;
+            activeBowlImg.dataset.id = imageId;
 
             if (newSrc) {
                 activeEffect.style.display = 'block'; // Show animation effect
             }
         });
     });
+
+
+    function goToNextPage() {
+        const requiredItem = sessionStorage.getItem('formData');
+        if (!requiredItem) {
+            window.location.href = 'intro-form.html'; 
+        }else { 
+            if (activeBowlImg.src !== window.location.href) {
+
+                let formData = sessionStorage.getItem('formData');
+                if (formData) {
+                    formData = JSON.parse(formData);
+                    formData["รสชาติ"] = activeBowlImg.dataset.name;
+                    formData["bowl"] = activeBowlImg.dataset.id;
+                    sessionStorage.setItem('formData', JSON.stringify(formData)); 
+                    window.location.href = 'step2.html';
+                }
+            }else { 
+                alert("กรุณาเลือกรสชาติน้ำสลัดที่คุณชอบ");
+            }
+        }
+    }
 </script>
 </html>

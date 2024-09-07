@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./img/fav.jpg" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./animate.css">
+</head>
+<body class="page page-step2">
+    <div class="wrapper" >
+        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
+        <img src="./img/text-3.png" class="img-text animate__animated animate__bounceIn" />
+        
+
+        <div class="menu-wrapper">
+            <img src="./img/menu-1.png" id="menu-1" />
+            <img src="./img/menu-2.png" id="menu-2" />
+            <img src="./img/menu-3.png" id="menu-3" />
+        </div>
+
+        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
+        <img src="" id="activeBowl" class="active-bowl">
+
+        <button class="btn-submit" onclick="goToNextPage()">
+            <img src="./img/next-btn.png" />
+        </button>
+
+    </div>
+    <img src="./img/sink-grid.png"  class="bg-sink" />
+</body>
+<script>
+    const activeBowlImg = document.getElementById('activeBowl');
+    const activeEffect = document.getElementById('activeEffect'); 
+    let formData = sessionStorage.getItem('formData');
+    let activeBowlNum, activeMenuNum;
+    
+    // TODO: DELETE THIS
+    console.log(formData);
+
+    if (formData) {
+        formData = JSON.parse(formData);
+        const imageId = formData['bowl'];
+
+        if(formData['menu']){
+            
+
+            activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
+            activeMenuNum = formData['menu'].charAt(formData['menu'].length - 1);
+
+            const newSrc = `./img/menu-${activeMenuNum}-${activeBowlNum}.png`;
+            activeBowlImg.src = newSrc;
+
+        }else { 
+            if( imageId ) {
+                const newSrc = `./img/${imageId}-active.png`;
+                activeBowlImg.src = newSrc;
+                activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
+                if (newSrc) {
+                    activeEffect.style.display = 'block'; 
+                }
+
+            }else { 
+                window.location.href = 'step1.html';
+            }
+        }
+        
+        
+    }else { 
+        window.location.href = 'intro-form.html';
+    }
+
+
+    const images = document.querySelectorAll('.menu-wrapper img');
+    images.forEach(function(image) {
+        image.addEventListener('click', function() {
+            const imageId = this.id;
+
+            const newSrc = `./img/${imageId}-${activeBowlNum}.png`;
+            activeBowlImg.src = newSrc;
+            activeBowlImg.dataset.id = imageId;
+
+            if (newSrc) {
+                activeEffect.style.display = 'none';
+            }
+
+            formData['menu'] = imageId;
+        });
+    });
+
+
+    function goToNextPage() {
+
+        sessionStorage.setItem('formData', JSON.stringify(formData)); 
+
+        let requiredItem = sessionStorage.getItem('formData');
+            requiredItem = JSON.parse(requiredItem);
+            console.log(requiredItem);
+            if (requiredItem['menu']) {
+                window.location.href = 'order1.html';
+            }else { 
+                alert("กรุณาเลือกจุดเด่นบนจานในแบบคุณ");
+            }
+    }
+
+</script>
+</html>
