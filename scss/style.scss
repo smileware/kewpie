@@ -625,7 +625,11 @@ body, html {
         width: 240px;
         transform-origin: center;
         animation: tickTock 2s infinite alternate ease-in-out;
-        margin-top: 80px;
+        position: absolute;
+        bottom: 230px;
+        left: calc(50% - 120px);
+        transform: translate(-50%, 0);
+
         @keyframes tickTock {
             0% {
                 transform: rotate(0);
