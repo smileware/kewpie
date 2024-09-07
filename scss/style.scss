@@ -193,7 +193,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -338,7 +338,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -348,12 +348,12 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 233px;
+        bottom: 190px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
         width: 80px;
-        bottom: 330px;
+        bottom: 300px;
         display: none;
     }
     @media only screen and (max-width: 375px) {
@@ -443,7 +443,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -453,12 +453,12 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 233px;
+        bottom: 190px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
         width: 80px;
-        bottom: 330px;
+        bottom: 300px;
         display: none;
     }
     @media only screen and (max-width: 375px) {
@@ -502,7 +502,7 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 233px;
+        bottom: 200px;
         transform: translate(-50%, 0);
     }
     .btn-submit { 
@@ -510,7 +510,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -554,12 +554,12 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 233px;
+        bottom: 200px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
         width: 80px;
-        bottom: 330px;
+        bottom: 300px;
         display: none;
     }
     .inner {
@@ -625,6 +625,7 @@ body, html {
         width: 240px;
         transform-origin: center;
         animation: tickTock 2s infinite alternate ease-in-out;
+        margin-top: 80px;
         @keyframes tickTock {
             0% {
                 transform: rotate(0);
@@ -639,7 +640,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 75px;
+        bottom: 40px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -702,7 +703,7 @@ body, html {
         width: 240px;
         position: absolute;
         left: 50%;
-        bottom: 150px;
+        bottom: 90px;
         transform: translate(-50%, 0);
     }
     @media only screen and (max-width: 375px) {
@@ -759,12 +760,12 @@ body, html {
         width: calc(100% - 20px);
         position: absolute;
         left: 50%;
-        bottom: 220px;
+        bottom: 150px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
         width: 160px;
-        bottom: 430px;
+        bottom:360px;
     }
 
     .btn-submit { 
@@ -772,7 +773,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -836,12 +837,12 @@ body, html {
         width: calc(100% - 20px);
         position: absolute;
         left: 50%;
-        bottom: 206px;
+        bottom: 150px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
         width: 160px;
-        bottom: 430px;
+        bottom: 300px;
     }
 
     .btn-submit { 
@@ -849,7 +850,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -911,7 +912,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 130px;
+        bottom: 80px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
