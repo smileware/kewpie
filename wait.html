@@ -28,7 +28,23 @@
 
 
 <script>
-    const countdownDuration = 10; // 10 seconds
+    
+    const activeWaitImg = document.getElementById('rotatingImage');
+    let formData = sessionStorage.getItem('formData');
+    if (formData) {
+        formData = JSON.parse(formData);
+        const imageId = formData['bowl'];
+
+        if( imageId ) {
+            const newSrc = `./img/wait-${imageId}.png`;
+            activeWaitImg.src = newSrc;
+        }else { 
+            window.location.href = 'step1.html';
+        }
+    }
+
+
+    const countdownDuration = 90; // 10 seconds
     var isClick = false;
 
     function initializeCountdown() {
@@ -75,6 +91,30 @@
 
     // Initialize the countdown when the script runs
     initializeCountdown();
+
+
+
+    const images = document.querySelector('.wait-dish');
+    let tickCount = 0;
+    const totalTicks = 90; // 90 ticks for 90 seconds
+
+    function updateTickTock() {
+        tickCount++;
+        
+        // Rotate image based on tickCount
+        if (tickCount % 2 === 0) {
+            images.style.transform = 'rotate(0deg)';
+        } else {
+            images.style.transform = 'rotate(-25deg)';
+        }
+
+        if (tickCount < totalTicks) {
+            setTimeout(updateTickTock, 1000); // 1-second interval
+        }
+    }
+
+    updateTickTock(); // Start ticking
+
 
     function goToNextPage() {
         if (isClick) { 

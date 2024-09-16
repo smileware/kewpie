@@ -11,16 +11,13 @@
 <body class="page page-order2">
     <div class="wrapper" >
         <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
-
+        <img src="./img/bg-top.png"  class="bg-shelf" />
         <div class="inner">
-            <img src="./img/text-5.png" class="img-text animate__animated animate__bounceIn" style="margin-top: 20px;" />
-            <button class="btn-submit" onclick="goToNextPage()">
-                <img src="./img/next-btn.png" />
-            </button>
+            <img src="./img/text-5.gif" class="img-text animate__animated animate__bounceIn" style="margin-top: 170px;"  onclick="goToNextPage()" />
         </div>
 
-
         <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
+        <img src="" id="activeAnimation" class="active-animation">
         <img src="" id="activeBowl" class="active-bowl">
 
 
@@ -31,6 +28,7 @@
 <img src="./img/sink.png"  class="bg-sink" />
 
 <script>
+    const activeAnimation = document.getElementById('activeAnimation');
     const activeBowlImg = document.getElementById('activeBowl');
     const activeEffect = document.getElementById('activeEffect'); 
     let formData = sessionStorage.getItem('formData');
@@ -40,17 +38,24 @@
         formData = JSON.parse(formData);
         const imageId = formData['bowl'];
 
-        if( imageId ) {
-            const newSrc = `./img/${imageId}-active.png`;
-            activeBowlImg.src = newSrc;
-            activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
-
-            if (newSrc) {
-                activeEffect.style.display = 'block'; 
-            }
+        if(formData['menu']){
+            
+            activeBowlNum = formData['bowl'];
+            activeMenuNum = formData['menu'];
+            activeBowlImg.src = `./img/${activeBowlNum}-active.png`;
+            activeAnimation.src = `./img/${activeMenuNum}-animation.gif`;
 
         }else { 
-            window.location.href = 'step1.html';
+            if( imageId ) {
+                const newSrc = `./img/${imageId}-active.png`;
+                activeBowlImg.src = newSrc;
+                activeBowlNum = formData['bowl'];
+                if (newSrc) {
+                    activeEffect.style.display = 'block'; 
+                }
+            }else { 
+                window.location.href = 'step1.html';
+            }
         }
     }else { 
         window.location.href = 'intro-form.html';

@@ -10,17 +10,17 @@
 </head>
 <body class="page page-step2">
     <div class="wrapper" >
-        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
         <img src="./img/text-3.png" class="img-text animate__animated animate__bounceIn" />
         
 
         <div class="menu-wrapper">
-            <img src="./img/menu-1.png" id="menu-1" />
-            <img src="./img/menu-2.png" id="menu-2" />
-            <img src="./img/menu-3.png" id="menu-3" />
+            <img src="./img/menu-1.png" id="menu-1" class="animate__animated animate__slow animate__bounceIn" />
+            <img src="./img/menu-2.png" id="menu-2" class="animate__animated animate__slow animate__bounceIn" />
+            <img src="./img/menu-3.png" id="menu-3" class="animate__animated animate__slow animate__bounceIn" />
         </div>
 
         <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
+        <img src="" id="activeAnimation" class="active-animation">
         <img src="" id="activeBowl" class="active-bowl">
 
         <button class="btn-submit" onclick="goToNextPage()">
@@ -31,6 +31,7 @@
     <img src="./img/sink-grid.png"  class="bg-sink" />
 </body>
 <script>
+    const activeAnimation = document.getElementById('activeAnimation');
     const activeBowlImg = document.getElementById('activeBowl');
     const activeEffect = document.getElementById('activeEffect'); 
     let formData = sessionStorage.getItem('formData');
@@ -45,18 +46,16 @@
 
         if(formData['menu']){
             
-
-            activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
-            activeMenuNum = formData['menu'].charAt(formData['menu'].length - 1);
-
-            const newSrc = `./img/menu-${activeMenuNum}-${activeBowlNum}.png`;
-            activeBowlImg.src = newSrc;
+            activeBowlNum = formData['bowl'];
+            activeMenuNum = formData['menu'];
+            activeBowlImg.src = `./img/${activeBowlNum}-active.png`;
+            activeAnimation.src = `./img/${activeMenuNum}-animation.gif`;
 
         }else { 
             if( imageId ) {
                 const newSrc = `./img/${imageId}-active.png`;
                 activeBowlImg.src = newSrc;
-                activeBowlNum = formData['bowl'].charAt(formData['bowl'].length - 1);
+                activeBowlNum = formData['bowl'];
                 if (newSrc) {
                     activeEffect.style.display = 'block'; 
                 }
@@ -66,7 +65,6 @@
             }
         }
         
-        
     }else { 
         window.location.href = 'intro-form.html';
     }
@@ -75,20 +73,27 @@
     const images = document.querySelectorAll('.menu-wrapper img');
     images.forEach(function(image) {
         image.addEventListener('click', function() {
-            const imageId = this.id;
+            const imageId = this.id; // = menu-1, menu-2, menu-3;
 
-            const newSrc = `./img/${imageId}-${activeBowlNum}.png`;
-            activeBowlImg.src = newSrc;
-            activeBowlImg.dataset.id = imageId;
+            const newSrc = `./img/${imageId}-animation.gif`;
+
+            activeAnimation.src = newSrc;
+            activeAnimation.dataset.id = imageId;
 
             if (newSrc) {
                 activeEffect.style.display = 'none';
             }
 
+            images.forEach(function(img) {
+                img.src = `./img/${img.id}.png`;
+            });
+
+            // Change the clicked image to its empty state
+            this.src = `./img/${imageId}-empty.png`;
+            
             formData['menu'] = imageId;
         });
     });
-
 
     function goToNextPage() {
 
@@ -98,7 +103,7 @@
             requiredItem = JSON.parse(requiredItem);
             console.log(requiredItem);
             if (requiredItem['menu']) {
-                window.location.href = 'order1.html';
+                window.location.href = 'order2.html';
             }else { 
                 alert("กรุณาเลือกจุดเด่นบนจานในแบบคุณ");
             }

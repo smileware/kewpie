@@ -79,6 +79,11 @@ body, html {
         align-items: center;
         justify-content: center;
     }
+    .spoon { 
+        position: absolute;
+        bottom: -40px;
+        width: 300px;
+    }
 }
 /*
     ######  ####  #####  #    # 
@@ -257,6 +262,12 @@ body, html {
         width: 100%;
         max-height: 220px;
     }
+    .spoon { 
+        position: absolute;
+        bottom: -40px;
+        width: 300px;
+        right: 20px;
+    }
     .bg-spoon { 
         padding: 0px 20px;
         width: 300px;
@@ -296,7 +307,18 @@ body, html {
         left: 0;
         bottom: 0;
         width: 100%;
+        object-fit: cover;
+        object-position: top;
         max-height: 220px;
+    }
+    .bg-grid { 
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        max-height: 260px;
     }
     .img-text { 
         width: 100%;
@@ -310,11 +332,35 @@ body, html {
         background-repeat: no-repeat;
         margin: 80px auto 0;
     }
+    #bowl-1 { 
+        animation-delay: 0ms;
+    }
+    #bowl-2 { 
+        animation-delay: 200ms;
+    }
+    #bowl-3 { 
+        animation-delay: 400ms;
+    }
+    #bowl-4 { 
+        animation-delay: 600ms;
+    }
+    #bowl-5 { 
+        animation-delay: 800ms;
+    }
+    #bowl-6 { 
+        animation-delay: 1000ms;
+    }
+    #bowl-7 { 
+        animation-delay: 1200ms;
+    }
+    #bowl-8 { 
+        animation-delay: 1400ms;
+    }
     .shelf-item {
         display: flex;
         justify-content: space-evenly;
         &:nth-child(1) { 
-            top: -70px;
+            top: -69px;
             position: relative;
         }
         &:nth-child(2) { 
@@ -328,6 +374,14 @@ body, html {
         &:nth-child(4) { 
             top: -10px;
             position: relative;
+        }
+        &:nth-child(4) { 
+            img {
+                &:first-child { 
+                    width: 170px;
+                    margin-left: -10px;
+                }
+            }
         }
         img { 
             width: 145px
@@ -431,12 +485,19 @@ body, html {
         img { 
             height: 145px;
             width: auto;
-            min-width: 50%;
+            min-width: 33.33%;
             object-fit: contain;
-            &:nth-child(3) { 
-                margin-top: -50px;
-            }
+          
         }
+    }
+    #menu-1 { 
+        animation-delay: 300ms;
+    }
+    #menu-2 { 
+        animation-delay: 100ms;
+    }
+    #menu-3 { 
+        animation-delay: 500ms;
     }
     .btn-submit { 
         background: rgba(0, 0, 0, 0);
@@ -448,6 +509,13 @@ body, html {
         img { 
             width: 280px;
         }
+    }
+    .active-animation { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 270px;
+        transform: translate(-50%, 0);
     }
     .active-bowl,.active-effect { 
         width: 200px;
@@ -488,6 +556,15 @@ body, html {
  ####  #    # #####  ###### #    #  ##### 
 */
 .page-order1 {
+    .logo { 
+        width: 80px;
+    }
+    .bg-shelf { 
+        position: absolute;
+        left: 0;
+        top: 90px;
+        width: 100%;
+    }
     .bg-sink { 
         position: absolute;
         left: 0;
@@ -538,7 +615,13 @@ body, html {
 */
 .page-order2 {
     .logo { 
-        width: 150px;
+        width: 80px;
+    }
+    .bg-shelf { 
+        position: absolute;
+        left: 0;
+        top: 90px;
+        width: 100%;
     }
     .bg-sink { 
         position: absolute;
@@ -549,6 +632,13 @@ body, html {
     }
     .img-text { 
         width: 100%;
+    }
+    .active-animation { 
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        bottom: 270px;
+        transform: translate(-50%, 0);
     }
     .active-bowl,.active-effect { 
         width: 200px;
@@ -624,20 +714,20 @@ body, html {
     .wait-dish { 
         width: 240px;
         transform-origin: center;
-        animation: tickTock 2s infinite alternate ease-in-out;
+        // animation: tickTock 1s infinite alternate steps(2);
         position: absolute;
         bottom: 230px;
         left: calc(50% - 120px);
         transform: translate(-50%, 0);
 
-        @keyframes tickTock {
-            0% {
-                transform: rotate(0);
-            }
-            100% {
-                transform: rotate(-25deg);
-            }
-        }
+        // @keyframes tickTock {
+        //     0% {
+        //         transform: rotate(0);
+        //     }
+        //     100% {
+        //         transform: rotate(-45deg);
+        //     }
+        // }
     }
     .btn-submit { 
         background: rgba(0, 0, 0, 0);
@@ -661,6 +751,7 @@ body, html {
         }
         .wait-dish { 
             width: 160px;
+            left: 0;
             position: relative;
             top: -50px;
         }
@@ -683,7 +774,7 @@ body, html {
     }
     .inner {
         position: relative;
-        padding: 0 30px;
+        padding: 0;
     }
     .bg-sink { 
         position: absolute;
@@ -761,7 +852,7 @@ body, html {
     }
     .active-bowl,
     .active-effect { 
-        width: calc(100% - 20px);
+        width: 100%;
         position: absolute;
         left: 50%;
         bottom: 150px;
@@ -838,7 +929,7 @@ body, html {
     }
     .active-bowl,
     .active-effect { 
-        width: calc(100% - 20px);
+        width: 100%;
         position: absolute;
         left: 50%;
         bottom: 150px;
@@ -900,15 +991,20 @@ body, html {
     }
     .inner { 
         display: flex;
-        img { 
-            width: 50%;
+        div { 
+            padding: 0 10px;
+            width: calc(33.33% - 20px);
+            flex-direction: column;
+            display: flex;
+            align-items: center;
         }
         .icon { 
-            height: 150px;
+            height: 75px;
             object-fit: contain;
+            margin-bottom: 30px;
         }
         .btn { 
-            width: 170px;
+            width: 100%;
         }
     }
     .btn-submit { 
@@ -952,3 +1048,20 @@ body, html {
         width: 100%;
     }
 }
+
+@keyframes wiggle {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    75% {
+      transform: rotate(-5deg);
+    }
+  }
+  
+  .wiggle-animation {
+    display: inline-block;
+    animation: wiggle 1.5s ease-in-out infinite;
+  }
