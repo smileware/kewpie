@@ -629,9 +629,10 @@ body, html {
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: -20px;
+        bottom: 0px;
         width: 100%;
-        max-height: 220px;
+        max-height: 250px;
+        z-index: 1;
     }
     .img-text { 
         width: 100%;
@@ -640,15 +641,17 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 250px;
+        bottom: 245px;
         transform: translate(-50%, 0);
+        z-index: 1;
     }
     .active-bowl,.active-effect { 
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 170px;
+        bottom: 155px;
         transform: translate(-50%, 0);
+        z-index: 2;
     }
     .active-effect { 
         width: 80px;
