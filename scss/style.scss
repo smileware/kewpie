@@ -614,19 +614,22 @@ body, html {
  ####  #    # #####  ###### #    # ####### 
 */
 .page-order2 {
+    .wrapper {
+        padding-top: 20px;
+    }
     .logo { 
         width: 80px;
     }
     .bg-shelf { 
         position: absolute;
         left: 0;
-        top: 90px;
+        top: 70px;
         width: 100%;
     }
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -20px;
         width: 100%;
         max-height: 220px;
     }
@@ -637,14 +640,14 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 270px;
+        bottom: 250px;
         transform: translate(-50%, 0);
     }
     .active-bowl,.active-effect { 
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 200px;
+        bottom: 170px;
         transform: translate(-50%, 0);
     }
     .active-effect { 
