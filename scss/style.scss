@@ -601,7 +601,7 @@ body, html {
     @media only screen and (max-width: 375px) {
         .active-bowl { 
             width: 140px;
-            bottom: 190px;
+            bottom: 130px;
         }
         .btn-submit { 
             bottom: 80px;
@@ -678,9 +678,12 @@ body, html {
         }
     }
     @media only screen and (max-width: 375px) {
+        .active-animation { 
+            bottom: 195px;
+        }
         .active-bowl,.active-effect { 
             width: 140px;
-            bottom: 190px;
+            bottom: 130px;
         }
         .active-effect { 
             width: 80px;
@@ -764,7 +767,7 @@ body, html {
             width: 160px;
             left: 0;
             position: relative;
-            top: -50px;
+            top: -20px;
         }
     }
 }
@@ -831,6 +834,7 @@ body, html {
 */
 
 .page-final2 {
+
     .img-text { 
         width: 100%;
     }
@@ -887,6 +891,9 @@ body, html {
     }
    
     @media only screen and (max-width: 375px) {
+        .logo { 
+            width: 100px;
+        }
         .active-bowl,
         .active-effect { 
             width: calc(100% - 90px);
@@ -965,7 +972,7 @@ body, html {
    
     @media only screen and (max-width: 375px) {
         .logo { 
-            width: 150px;
+            width: 100px;
         }
         .active-bowl,
         .active-effect { 
@@ -1031,6 +1038,9 @@ body, html {
     }
        
     @media only screen and (max-width: 375px) {
+        .logo { 
+            width: 100px;
+        }
         .btn-submit { 
             bottom: 80px;
         }
