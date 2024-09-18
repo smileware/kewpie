@@ -491,7 +491,6 @@ body, html {
     .menu-wrapper { 
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
         img { 
             height: 145px;
             width: auto;
@@ -543,6 +542,10 @@ body, html {
         .active-bowl,.active-effect { 
             width: 140px;
             bottom: 190px;
+        }
+        .active-animation { 
+            width: 140px;
+            bottom: 250px;
         }
         .active-effect { 
             width: 80px;
@@ -685,6 +688,7 @@ body, html {
     @media only screen and (max-width: 375px) {
         .active-animation { 
             bottom: 195px;
+            width: 120px;
         }
         .active-bowl,.active-effect { 
             width: 140px;
