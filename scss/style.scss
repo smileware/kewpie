@@ -369,24 +369,24 @@ body, html {
             position: relative;
         }
         &:nth-child(2) { 
-            top: -40px;
+            top: -35px;
             position: relative;
         }
         &:nth-child(3) { 
-            top: -20px;
+            top: -12px;
             position: relative;
         }
         &:nth-child(4) { 
-            top: -10px;
+            top: 10px;
             position: relative;
         }
         &:nth-child(4) { 
-            img {
-                &:first-child { 
-                    width: 170px;
-                    margin-left: -10px;
-                }
-            }
+            // img {
+            //     &:first-child { 
+            //         width: 170px;
+            //         margin-left: -10px;
+            //     }
+            // }
         }
         img { 
             width: 145px
@@ -433,17 +433,17 @@ body, html {
                 position: relative;
             }
             &:nth-child(3) { 
-                top: -4px;
+                top: 5px;
                 position: relative;
             }
             &:nth-child(4) { 
-                top: 5px;
+                top: 25px;
                 position: relative;
-                img { 
-                    &:first-child { 
-                        width: 120px;
-                    }
-                }
+                // img { 
+                //     &:first-child { 
+                //         width: 120px;
+                //     }
+                // }
             }
             img { 
                 width: 100px
