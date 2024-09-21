@@ -31,6 +31,12 @@
     let formData = sessionStorage.getItem('formData');
     let activeBowlNum, activeMenuNum;
     
+    // save to GG Sheet
+    // const sheetId = '1TSzqcW6Mg-axt0FJIsOpQST_mbc2IgVsaspHJBItvS8';  // Your Google Sheet ID
+    // const apiKey = 'AIzaSyAxUX_aNsK96JByCiI2v6JTOrs9o2P22Es';  // Your API key
+    // const range = 'Sheet1!A1:C10';  // Adjust range to your data
+    // const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1:append?valueInputOption=RAW&key=${apiKey}`;
+
     if (formData) {
         formData = JSON.parse(formData);
         const imageId = formData['bowl'];
@@ -54,9 +60,43 @@
                 window.location.href = 'step1.html';
             }
         }
+        // Save to GG 
+        // const values = [
+        //     [
+        //         formData.gender, 
+        //         formData.age, 
+        //         formData.kewpie, 
+        //         formData.preference, 
+        //         formData.consent, 
+        //         formData['รสชาติ'], 
+        //         formData.bowl, 
+        //         formData.menu
+        //     ]
+        // ];
+        // const body = {
+        //     "range": "Sheet1!A1",  // Adjust if necessary
+        //     "majorDimension": "ROWS",  // Add data row by row
+        //     "values": values
+        // };
+        // fetch(url, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(body),
+        //     })
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         console.log('Data successfully added:', result);
+        //     })
+        //     .catch(error => console.error('Error saving data:', error));
+
     }else { 
         window.location.href = 'intro-form.html';
     }
+
+
+
     function goToNextPage() {
         window.location.href = 'wait.html';
     }

@@ -685,7 +685,7 @@ body, html {
             width: 280px;
         }
     }
-    @media only screen and (max-width: 375px) {
+    @media only screen and (max-width: 400px) {
         .active-animation { 
             bottom: 195px;
             width: 120px;
@@ -843,7 +843,6 @@ body, html {
 */
 
 .page-final2 {
-
     .img-text { 
         width: 100%;
     }
@@ -933,6 +932,7 @@ body, html {
     #      # #    # #    # ######  #####  
 */
 .page-final3 {
+  
     .bg-sink { 
         position: absolute;
         left: 0;
@@ -978,7 +978,20 @@ body, html {
             width: 280px;
         }
     }
-   
+    @media only screen and (min-width: 414px){
+        .logo { 
+            width: 100px;
+        }
+        .active-bowl,
+        .active-effect { 
+            width: calc(100% - 90px);
+            bottom: 160px;
+            transform: traslate(-50%, 0);
+        }
+        .btn-submit { 
+            bottom: 80px;
+        }
+    }
     @media only screen and (max-width: 375px) {
         .logo { 
             width: 100px;
