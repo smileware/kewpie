@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="icon" href="./img/fav.jpg" type="image/png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="icon" href="./img/fav.jpg" type="image/png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./animate.css">
-</head>
-<body class="page page-order2">
-    <div class="wrapper" >
-        <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
-        <img src="./img/bg-top.png"  class="bg-shelf" />
-        <div class="inner">
-            <img src="./img/text-5.gif" class="img-text animate__animated animate__bounceIn" style="margin-top: 140px;"  onclick="goToNextPage()" />
-        </div>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./animate.css" />
+  </head>
+  <body class="page page-order2">
+    <div class="wrapper">
+      <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
+      <img src="./img/bg-top.png" class="bg-shelf" />
+      <div class="inner">
+        <img
+          src="./img/text-5.gif"
+          class="img-text animate__animated animate__bounceIn"
+          style="margin-top: 140px"
+          onclick="goToNextPage()"
+        />
+      </div>
 
-        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
-        <img src="" id="activeAnimation" class="active-animation">
-        <img src="" id="activeBowl" class="active-bowl">
+      <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect" />
+      <img src="" id="activeAnimation" class="active-animation" />
+      <img src="" id="activeBowl" class="active-bowl" />
 
-        <img src="./img/sink.png"  class="bg-sink" />
+      <img src="./img/sink.png" class="bg-sink" />
     </div>
-</body>
+  </body>
 
-<script>
-    const activeAnimation = document.getElementById('activeAnimation');
-    const activeBowlImg = document.getElementById('activeBowl');
-    const activeEffect = document.getElementById('activeEffect'); 
-    let formData = sessionStorage.getItem('formData');
-    let activeBowlNum, activeMenuNum;
-    
+  <script>
+    const activeAnimation = document.getElementById('activeAnimation')
+    const activeBowlImg = document.getElementById('activeBowl')
+    const activeEffect = document.getElementById('activeEffect')
+    let formData = sessionStorage.getItem('formData')
+    let activeBowlNum, activeMenuNum
+
     // save to GG Sheet
     // const sheetId = '1TSzqcW6Mg-axt0FJIsOpQST_mbc2IgVsaspHJBItvS8';  // Your Google Sheet ID
     // const apiKey = 'AIzaSyAxUX_aNsK96JByCiI2v6JTOrs9o2P22Es';  // Your API key
@@ -38,67 +43,55 @@
     // const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1:append?valueInputOption=RAW&key=${apiKey}`;
 
     if (formData) {
-        formData = JSON.parse(formData);
-        const imageId = formData['bowl'];
+      formData = JSON.parse(formData)
+      const imageId = formData['bowl']
 
-        if(formData['menu']){
-            
-            activeBowlNum = formData['bowl'];
-            activeMenuNum = formData['menu'];
-            activeBowlImg.src = `./img/${activeBowlNum}-active.png`;
-            activeAnimation.src = `./img/${activeMenuNum}-animation.gif`;
-
-        }else { 
-            if( imageId ) {
-                const newSrc = `./img/${imageId}-active.png`;
-                activeBowlImg.src = newSrc;
-                activeBowlNum = formData['bowl'];
-                if (newSrc) {
-                    activeEffect.style.display = 'block'; 
-                }
-            }else { 
-                window.location.href = 'step1.html';
-            }
+      if (formData['menu']) {
+        activeBowlNum = formData['bowl']
+        activeMenuNum = formData['menu']
+        activeBowlImg.src = `./img/${activeBowlNum}-active.png`
+        activeAnimation.src = `./img/${activeMenuNum}-animation.gif`
+      } else {
+        if (imageId) {
+          const newSrc = `./img/${imageId}-active.png`
+          activeBowlImg.src = newSrc
+          activeBowlNum = formData['bowl']
+          if (newSrc) {
+            activeEffect.style.display = 'block'
+          }
+        } else {
+          window.location.href = 'step1.html'
         }
-        // Save to GG 
-        // const values = [
-        //     [
-        //         formData.gender, 
-        //         formData.age, 
-        //         formData.kewpie, 
-        //         formData.preference, 
-        //         formData.consent, 
-        //         formData['รสชาติ'], 
-        //         formData.bowl, 
-        //         formData.menu
-        //     ]
-        // ];
-        // const body = {
-        //     "range": "Sheet1!A1",  // Adjust if necessary
-        //     "majorDimension": "ROWS",  // Add data row by row
-        //     "values": values
-        // };
-        // fetch(url, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(body),
-        //     })
-        //     .then(response => response.json())
-        //     .then(result => {
-        //         console.log('Data successfully added:', result);
-        //     })
-        //     .catch(error => console.error('Error saving data:', error));
-
-    }else { 
-        window.location.href = 'intro-form.html';
+      }
+      // Save to GG-Sheet
+      const dataToSheet = new FormData()
+      dataToSheet.append('gender', formData.gender)
+      dataToSheet.append('age', formData.age)
+      dataToSheet.append('kewpie', formData.kewpie)
+      dataToSheet.append('preference', formData.preference)
+      dataToSheet.append('consent', formData.consent)
+      dataToSheet.append('taste', formData['รสชาติ'])
+      dataToSheet.append('bowl', formData.bowl)
+      dataToSheet.append('menu', formData.menu)
+      const deployKey = 'AKfycbyYAOQhFMsJcQF2wXEl_rxob-UEzgvawvCA_zlGzNpu0VRw3A1ksHMhJiNWa6pt3vAn'
+      const url = `https://script.google.com/macros/s/${deployKey}/exec`
+      fetch(url, {
+        method: 'POST',
+        body: dataToSheet,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log('Data submitted successfully')
+        })
+        .catch((error) => {
+          console.error('Error:', error)
+        })
+    } else {
+      window.location.href = 'intro-form.html'
     }
-
-
 
     function goToNextPage() {
-        window.location.href = 'wait.html';
+      window.location.href = 'wait.html'
     }
-</script>
+  </script>
 </html>
