@@ -777,11 +777,13 @@ body, html {
         }
         .wait-dish { 
             width: 100px;
+            left: calc(50% - 50px);
         }
     }
     @media only screen and (max-width: 376px) {
         .wait-dish { 
             width: 160px;
+            left: calc(50% - 80px);
         }
     }
 }
