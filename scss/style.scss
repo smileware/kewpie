@@ -417,12 +417,14 @@ body, html {
     }
     // @media only screen and (max-width: 375px) {
     @media only screen and (max-width: 414px) {
-
+        > .wrapper { 
+            padding-top: 10px;
+        }
         .shelf { 
             max-width: 300px;
             height: 300px;
             width: 400px;
-            margin: 50px auto 0;
+            margin: 35px auto 0;
         }
         .shelf-item {
             &:nth-child(1) { 
@@ -452,7 +454,7 @@ body, html {
         } 
         .active-bowl,.active-effect { 
             width: 140px;
-            bottom: 190px;
+            bottom: 175px;
         }
         .active-effect { 
             width: 80px;
