@@ -415,7 +415,8 @@ body, html {
         bottom: 300px;
         display: none;
     }
-    @media only screen and (max-width: 375px) {
+    // @media only screen and (max-width: 375px) {
+    @media only screen and (max-width: 414px) {
 
         .shelf { 
             max-width: 300px;
