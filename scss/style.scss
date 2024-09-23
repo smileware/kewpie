@@ -992,7 +992,7 @@ body, html {
             width: 280px;
         }
     }
-    @media only screen and (min-width: 414px){
+    @media only screen and (max-width: 414px){
         .logo { 
             width: 100px;
         }
