@@ -766,7 +766,7 @@ body, html {
             width: 280px;
         }
     }
-    @media only screen and (max-width: 375px) {
+    @media only screen and (max-width: 420px) {
         .active-effect { 
             width: 80px;
             bottom: 260px;
@@ -776,10 +776,12 @@ body, html {
             bottom: 40px;
         }
         .wait-dish { 
+            width: 100px;
+        }
+    }
+    @media only screen and (max-width: 376px) {
+        .wait-dish { 
             width: 160px;
-            left: 0;
-            position: relative;
-            top: -20px;
         }
     }
 }
