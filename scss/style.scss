@@ -783,8 +783,8 @@ body, html {
             bottom: 40px;
         }
         .wait-dish { 
-            width: 100px;
-            left: calc(50% - 50px);
+            width: 160px;
+            left: calc(50% - 80px);
         }
     }
     @media only screen and (max-width: 376px) {
@@ -816,7 +816,7 @@ body, html {
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: -80px;
+        bottom: -30px;
         width: 100%;
         max-height: 220px;
     }
@@ -835,7 +835,7 @@ body, html {
         width: 200px;
         position: absolute;
         left: 50%;
-        bottom: 90px;
+        bottom: 140px;
         transform: translate(-50%, 0);
     }
     @media only screen and (max-width: 375px) {
@@ -998,7 +998,7 @@ body, html {
         }
         .active-bowl,
         .active-effect { 
-            width: calc(100% - 90px);
+            width: calc(100% - 30px);
             bottom: 160px;
             transform: traslate(-50%, 0);
         }
@@ -1012,7 +1012,7 @@ body, html {
         }
         .active-bowl,
         .active-effect { 
-            width: calc(100% - 90px);
+            width: calc(100% - 80px);
             bottom: 160px;
             transform: traslate(-50%, 0);
         }
