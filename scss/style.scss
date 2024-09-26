@@ -948,7 +948,6 @@ body, html {
     #      # #    # #    # ######  #####  
 */
 .page-final3 {
-  
     .bg-sink { 
         position: absolute;
         left: 0;
@@ -992,6 +991,11 @@ body, html {
         transform: translate(-50%, 0);
         img { 
             width: 280px;
+        }
+    }
+    @media only screen and (max-width: 440px){
+        .logo { 
+            width: 150px;
         }
     }
     @media only screen and (max-width: 414px){
