@@ -267,6 +267,12 @@ body, html {
     # #    # #####  ###### #    # 
 */
 .page-index { 
+    &.page>.wrapper { 
+        padding-top: 30px;
+    }
+    .logo {
+        width: calc(100% - 160px);
+    }
     .bg-sink, .bg-spoon { 
         position: absolute;
         left: 0;
@@ -423,6 +429,52 @@ body, html {
         display: none;
     }
     @media only screen and (max-width: 420px) {
+        > .wrapper { 
+            padding-top: 10px;
+        }
+        .shelf { 
+            max-width: 370px;
+            height: 300px;
+            width: 400px;
+            margin: 35px auto 0;
+        }
+        .shelf-item {
+            &:nth-child(1) { 
+                top: -48px;
+                position: relative;
+            }
+            &:nth-child(2) { 
+                top: 0px;
+                position: relative;
+            }
+            &:nth-child(3) { 
+                top: 35px;
+                position: relative;
+            }
+            &:nth-child(4) { 
+                top: 75px;
+                position: relative;
+            }
+            img { 
+                width: 100px
+            }
+        } 
+        .active-bowl,.active-effect { 
+            width: 140px;
+            bottom: 135px;
+        }
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
+        }
+
+        .btn-submit { 
+            bottom: 30px;
+        }
+    }
+
+    @media only screen and (max-width: 390px) {
         > .wrapper { 
             padding-top: 10px;
         }
@@ -689,6 +741,21 @@ body, html {
         transform: translate(-50%, 0);
         img { 
             width: 280px;
+        }
+    }
+    @media only screen and (max-width: 430px) {
+        .active-animation { 
+            bottom: 225px;
+            width: 170px;
+        }
+        .active-bowl,.active-effect { 
+            width: 170px;
+            bottom: 150px;
+        }
+        .active-effect { 
+            width: 80px;
+            bottom: 260px;
+            display: none;
         }
     }
     @media only screen and (max-width: 400px) {
@@ -998,7 +1065,7 @@ body, html {
             width: 150px;
         }
     }
-    @media only screen and (max-width: 414px){
+    @media only screen and (max-width: 420px){
         .logo { 
             width: 100px;
         }
