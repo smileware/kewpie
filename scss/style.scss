@@ -596,6 +596,24 @@ body, html {
         bottom: 300px;
         display: none;
     }
+    @media only screen and (max-width: 420px) {
+        .active-bowl,.active-effect { 
+            bottom: 150px;
+        }
+        .active-animation { 
+            width: 180px;
+            bottom: 250px;
+        }
+        .active-effect { 
+            width: 100px;
+            bottom: 300px;
+            display: none;
+        }
+
+        .btn-submit { 
+            bottom: 40px;
+        }
+    }
     @media only screen and (max-width: 375px) {
         .active-bowl,.active-effect { 
             width: 140px;
@@ -980,7 +998,20 @@ body, html {
             width: 280px;
         }
     }
-   
+    @media only screen and (max-width: 420px) {
+        .active-bowl,
+        .active-effect { 
+            bottom: 120px;
+        }
+        .active-effect { 
+            width: 110px;
+            bottom: 300px;
+        }
+    
+        .btn-submit { 
+            bottom: 40px;
+        }
+    }
     @media only screen and (max-width: 375px) {
         .logo { 
             width: 100px;
@@ -1060,6 +1091,7 @@ body, html {
             width: 280px;
         }
     }
+
     @media only screen and (max-width: 440px){
         .logo { 
             width: 150px;
@@ -1072,11 +1104,11 @@ body, html {
         .active-bowl,
         .active-effect { 
             width: calc(100% - 30px);
-            bottom: 160px;
+            bottom: 140px;
             transform: traslate(-50%, 0);
         }
         .btn-submit { 
-            bottom: 80px;
+            bottom: 40px;
         }
     }
     @media only screen and (max-width: 375px) {
