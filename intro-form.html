@@ -87,35 +87,59 @@
     </div>
     <img src="./img/sink.png"  class="bg-sink" />
 
-    <script>
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const selectElements = document.querySelectorAll('.required');
-            let isFormValid = true;
+   <script>
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const selectElements = document.querySelectorAll('.required');
+    let isFormValid = true;
 
-            selectElements.forEach(function(selectElement) {
-                const errorMessage = selectElement.nextElementSibling;
-                if (selectElement.value === '') {
-                    errorMessage.style.display = 'inline';
-                    isFormValid = false;
-                } else {
-                    errorMessage.style.display = 'none';
-                }
-            });
+    selectElements.forEach(function(selectElement) {
+        const errorMessage = selectElement.nextElementSibling;
+        if (selectElement.value === '') {
+            errorMessage.style.display = 'inline';
+            isFormValid = false;
+        } else {
+            errorMessage.style.display = 'none';
+        }
+    });
 
-            if (isFormValid) {
-                const formData = new FormData(document.getElementById('myForm'));
-                const formObject = {};
-                
-                formData.forEach(function(value, key) {
-                    formObject[key] = value;
-                });
-                
+    if (isFormValid) {
+        const formData = new FormData(document.getElementById('myForm'));
+        const formObject = {
+            page: 'intro-form',
+            gender: formData.get('gender'),
+            age: formData.get('age'),
+            kewpie: formData.get('kewpie'),
+            preference: formData.get('preference'),
+            consent: formData.get('consent')
+        };
+        
+        const deployKey = 'AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv';
+        const url = `https://script.google.com/macros/s/${AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv}/exec`;
+        
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({ data: formObject }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Data submitted successfully');
                 sessionStorage.setItem('formData', JSON.stringify(formObject));
-                console.log(JSON.parse(sessionStorage.getItem('formData')));
-                window.location.href = 'start.html';
+                window.location.href = 'step1.html';
+            } else {
+                throw new Error('Failed to submit data');
             }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
         });
-    </script>
+    }
+});
+</script>
 </body>
 </html>
