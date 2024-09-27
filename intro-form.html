@@ -87,58 +87,72 @@
     </div>
     <img src="./img/sink.png"  class="bg-sink" />
 
-   <script>
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectElements = document.querySelectorAll('.required');
-    let isFormValid = true;
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('myForm');
+    if (!form) {
+        console.error('Form not found');
+        return;
+    }
 
-    selectElements.forEach(function(selectElement) {
-        const errorMessage = selectElement.nextElementSibling;
-        if (selectElement.value === '') {
-            errorMessage.style.display = 'inline';
-            isFormValid = false;
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Form submitted');
+
+        const selectElements = document.querySelectorAll('.required');
+        let isFormValid = true;
+
+        selectElements.forEach(function(selectElement) {
+            const errorMessage = selectElement.nextElementSibling;
+            if (selectElement.value === '') {
+                errorMessage.style.display = 'inline';
+                isFormValid = false;
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        if (isFormValid) {
+            console.log('Form is valid, preparing to send data');
+            const formData = new FormData(form);
+            const formObject = {
+                page: 'intro-form',
+                gender: formData.get('gender'),
+                age: formData.get('age'),
+                kewpie: formData.get('kewpie'),
+                preference: formData.get('preference'),
+                consent: formData.get('consent')
+            };
+            
+            const deployKey = 'AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv';
+            const url = `https://script.google.com/macros/s/${AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv}/exec`;
+            
+            console.log('Sending data to:', url);
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({ data: formObject }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('Data submitted successfully');
+                    sessionStorage.setItem('formData', JSON.stringify(formObject));
+                    window.location.href = 'step1.html';
+                } else {
+                    throw new Error('Failed to submit data');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
         } else {
-            errorMessage.style.display = 'none';
+            console.log('Form is not valid');
         }
     });
-
-    if (isFormValid) {
-        const formData = new FormData(document.getElementById('myForm'));
-        const formObject = {
-            page: 'intro-form',
-            gender: formData.get('gender'),
-            age: formData.get('age'),
-            kewpie: formData.get('kewpie'),
-            preference: formData.get('preference'),
-            consent: formData.get('consent')
-        };
-        
-        const deployKey = 'AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv';
-        const url = `https://script.google.com/macros/s/${AKfycbxjIfF0HkGEz5chZpX5k8ntSFD5IetV4ZMJysfC8fo8ZlGOWxmz6OsQjqnwxMUkY4Lv}/exec`;
-        
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({ data: formObject }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Data submitted successfully');
-                sessionStorage.setItem('formData', JSON.stringify(formObject));
-                window.location.href = 'step1.html';
-            } else {
-                throw new Error('Failed to submit data');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
-        });
-    }
 });
 </script>
 </body>
