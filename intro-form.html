@@ -88,58 +88,34 @@
     <img src="./img/sink.png"  class="bg-sink" />
 
     <script>
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const selectElements = document.querySelectorAll('.required');
-    let isFormValid = true;
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectElements = document.querySelectorAll('.required');
+            let isFormValid = true;
 
-    selectElements.forEach(function(selectElement) {
-        const errorMessage = selectElement.nextElementSibling;
-        if (selectElement.value === '') {
-            errorMessage.style.display = 'inline';
-            isFormValid = false;
-        } else {
-            errorMessage.style.display = 'none';
-        }
-    });
+            selectElements.forEach(function(selectElement) {
+                const errorMessage = selectElement.nextElementSibling;
+                if (selectElement.value === '') {
+                    errorMessage.style.display = 'inline';
+                    isFormValid = false;
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            });
 
-    if (isFormValid) {
-        const formData = new FormData(document.getElementById('myForm'));
-        const formObject = {
-            page: 'intro-form',
-            gender: formData.get('gender'),
-            age: formData.get('age'),
-            kewpie: formData.get('kewpie'),
-            preference: formData.get('preference'),
-            consent: formData.get('consent')
-        };
-        
-        const deployKey = 'AKfycbwBoPRwJY-bBzJ2ANnlUXM7AcNll6EXwStn_OJ6xGh3dp667SnazY9ZlcU4flg33AWK';
-        const url = `https://script.google.com/macros/s/AKfycbwBoPRwJY-bBzJ2ANnlUXM7AcNll6EXwStn_OJ6xGh3dp667SnazY9ZlcU4flg33AWK/exec`;
-        
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({ data: formObject }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Data submitted successfully');
+            if (isFormValid) {
+                const formData = new FormData(document.getElementById('myForm'));
+                const formObject = {};
+                
+                formData.forEach(function(value, key) {
+                    formObject[key] = value;
+                });
+                
                 sessionStorage.setItem('formData', JSON.stringify(formObject));
-                window.location.href = 'step1.html';
-            } else {
-                throw new Error('Failed to submit data');
+                console.log(JSON.parse(sessionStorage.getItem('formData')));
+                window.location.href = 'start.html';
             }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
         });
-    }
-});
-</script>
+    </script>
 </body>
 </html>
