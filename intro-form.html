@@ -117,43 +117,40 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(form);
             formData.append('page', 'intro-form');
 
-            const deployKey = 'AKfycbzy05gK3pdIQRdKclLvVYi9r6IcmALinDdjGnDkSTU2ml0j-vzUnvgG-v2fPVLc_F4A';
-            const url = `https://script.google.com/macros/s/${deployKey}/exec`;
+            const deployKey = 'AKfycbxBKUjpYoPQHRpk7KD_rClLMtsNKrGY-HQbqHPGxKb3WwgEk1PeSL_nP7xqV_O2gtgw';
+            const baseUrl = `https://script.google.com/macros/s/${deployKey}/exec`;
+            
+            const params = new URLSearchParams(formData);
+            params.append('action', 'appendData');
+            params.append('callback', 'handleResponse');
+
+            const url = `${baseUrl}?${params.toString()}`;
             
             console.log('Sending data to:', url);
 
-            // Use XMLHttpRequest instead of fetch
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        console.log('Data submitted successfully');
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.result === 'success') {
-                            sessionStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
-                            window.location.href = 'step1.html';
-                        } else {
-                            console.error('Server returned an error:', response.error);
-                            alert('An error occurred. Please try again.');
-                        }
-                    } else {
-                        console.error('XHR request failed');
-                        alert('An error occurred. Please try again.');
-                    }
-                }
-            };
-            xhr.onerror = function() {
-                console.error('XHR request failed');
-                alert('An error occurred. Please try again.');
-            };
-            xhr.send(new URLSearchParams(formData));
+            // Create a script element to make the JSONP request
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
         } else {
             console.log('Form is not valid');
         }
     });
 });
+
+// Callback function to handle the response
+function handleResponse(response) {
+    if (response.result === 'success') {
+        console.log('Data submitted successfully');
+        const formData = new FormData(document.getElementById('myForm'));
+        formData.append('page', 'intro-form');
+        sessionStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
+        window.location.href = 'step1.html';
+    } else {
+        console.error('Server returned an error:', response.error);
+        alert('An error occurred. Please try again.');
+    }
+}
 </script>
 </body>
 </html>
