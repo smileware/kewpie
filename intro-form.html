@@ -115,44 +115,45 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isFormValid) {
             console.log('Form is valid, preparing to send data');
             const formData = new FormData(form);
-            const formObject = {
-                page: 'intro-form',
-                gender: formData.get('gender'),
-                age: formData.get('age'),
-                kewpie: formData.get('kewpie'),
-                preference: formData.get('preference'),
-                consent: formData.get('consent')
-            };
-            
-            const deployKey = 'AKfycbz-yDi7rAwBFeiHAQJzrNfWB5v5ztXhpKAjMLHWjXVyyWRVNoQj9DZuMWLOM1lG8-FG';
-            const baseUrl = `https://script.google.com/macros/s/${deploykey}/exec`;
-            
-            const jsonData = encodeURIComponent(JSON.stringify(formObject));
-            const url = `${baseUrl}?action=appendData&data=${jsonData}&callback=handleResponse`;
+            formData.append('page', 'intro-form');
+
+            const deployKey = 'AKfycbzy05gK3pdIQRdKclLvVYi9r6IcmALinDdjGnDkSTU2ml0j-vzUnvgG-v2fPVLc_F4A';
+            const url = `https://script.google.com/macros/s/${deployKey}/exec`;
             
             console.log('Sending data to:', url);
 
-            // Create a new script element
-            const script = document.createElement('script');
-            script.src = url;
-            document.body.appendChild(script);
+            // Use XMLHttpRequest instead of fetch
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Data submitted successfully');
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.result === 'success') {
+                            sessionStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
+                            window.location.href = 'step1.html';
+                        } else {
+                            console.error('Server returned an error:', response.error);
+                            alert('An error occurred. Please try again.');
+                        }
+                    } else {
+                        console.error('XHR request failed');
+                        alert('An error occurred. Please try again.');
+                    }
+                }
+            };
+            xhr.onerror = function() {
+                console.error('XHR request failed');
+                alert('An error occurred. Please try again.');
+            };
+            xhr.send(new URLSearchParams(formData));
         } else {
             console.log('Form is not valid');
         }
     });
 });
-
-// Callback function
-function handleResponse(response) {
-    if (response.success) {
-        console.log('Data submitted successfully');
-        sessionStorage.setItem('formData', JSON.stringify(formObject));
-        window.location.href = 'step1.html';
-    } else {
-        console.error('Failed to submit data');
-        alert('An error occurred. Please try again.');
-    }
-}
 </script>
 </body>
 </html>
