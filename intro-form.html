@@ -115,14 +115,23 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isFormValid) {
             console.log('Form is valid, preparing to send data');
             const formData = new FormData(form);
-            formData.append('page', 'intro-form');
 
             const deployKey = 'AKfycbxBKUjpYoPQHRpk7KD_rClLMtsNKrGY-HQbqHPGxKb3WwgEk1PeSL_nP7xqV_O2gtgw';
             const baseUrl = `https://script.google.com/macros/s/${deployKey}/exec`;
             
-            const params = new URLSearchParams(formData);
+            const params = new URLSearchParams();
             params.append('action', 'appendData');
             params.append('callback', 'handleResponse');
+            params.append('gender', formData.get('gender'));
+            params.append('age', formData.get('age'));
+            params.append('kewpie', formData.get('kewpie'));
+            params.append('preference', formData.get('preference'));
+            params.append('consent', formData.get('consent') ? 'Yes' : 'No');
+            // These fields will be empty for now, but will be filled in later pages
+            params.append('taste', '');
+            params.append('bowl', '');
+            params.append('menu', '');
+            params.append('award', '');
 
             const url = `${baseUrl}?${params.toString()}`;
             
@@ -143,7 +152,6 @@ function handleResponse(response) {
     if (response.result === 'success') {
         console.log('Data submitted successfully');
         const formData = new FormData(document.getElementById('myForm'));
-        formData.append('page', 'intro-form');
         sessionStorage.setItem('formData', JSON.stringify(Object.fromEntries(formData)));
         window.location.href = 'step1.html';
     } else {
