@@ -97,9 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
-        console.log('Form submitted');
+        console.log('Form submission attempted');
 
         const selectElements = document.querySelectorAll('.required');
+        const consentCheckbox = document.querySelector('input[name="consent"]');
         let isFormValid = true;
 
         selectElements.forEach(function(selectElement) {
@@ -107,10 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectElement.value === '') {
                 errorMessage.style.display = 'inline';
                 isFormValid = false;
+                console.log(`Invalid field: ${selectElement.name}`);
             } else {
                 errorMessage.style.display = 'none';
             }
         });
+
+        if (!consentCheckbox.checked) {
+            isFormValid = false;
+            console.log('Consent not given');
+            alert('Please agree to the consent statement.');
+        }
 
         if (isFormValid) {
             console.log('Form is valid, preparing to send data');
@@ -121,11 +129,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 age: formData.get('age'),
                 kewpie: formData.get('kewpie'),
                 preference: formData.get('preference'),
-                consent: formData.get('consent')
+                consent: formData.get('consent') ? 'Yes' : 'No'
             };
             
+            console.log('Form data:', formObject);
+
             const deployKey = 'AKfycbzuFaEBCqHJE4dMsnnhV6VKD2qHEdd8GdTQB9gKEyxovThSQjyWrjco142hMXqXQOXj';
-            const url = 'https://script.google.com/macros/s/AKfycbzuFaEBCqHJE4dMsnnhV6VKD2qHEdd8GdTQB9gKEyxovThSQjyWrjco142hMXqXQOXj/exec';
+            const url = `https://script.google.com/macros/s/${deployKey}/exec`;
             
             console.log('Sending data to:', url);
             fetch(url, {
@@ -135,14 +145,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json',
                 },
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.text();
+            })
+            .then(text => {
+                console.log('Response text:', text);
+                try {
+                    return JSON.parse(text);
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
+                    throw new Error('Invalid JSON response');
+                }
+            })
             .then(data => {
                 if (data.success) {
                     console.log('Data submitted successfully');
                     sessionStorage.setItem('formData', JSON.stringify(formObject));
                     window.location.href = 'step1.html';
                 } else {
-                    throw new Error('Failed to submit data');
+                    throw new Error('Server indicated failure');
                 }
             })
             .catch(error => {
@@ -151,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } else {
             console.log('Form is not valid');
+            alert('Please fill in all required fields and agree to the consent statement.');
         }
     });
 });
