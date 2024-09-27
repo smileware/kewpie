@@ -124,41 +124,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 consent: formData.get('consent')
             };
             
-            const deployKey = 'AKfycbw8tVhP_IJdS7UGW9lQ6PEDQL8MM6Tpak9APgufWaJEImr3eb78CnpwKPREzYCPKECj';
-            const url = `https://script.google.com/macros/s/${AKfycbw8tVhP_IJdS7UGW9lQ6PEDQL8MM6Tpak9APgufWaJEImr3eb78CnpwKPREzYCPKECj}/exec`;
+            const deployKey = 'AKfycbz-yDi7rAwBFeiHAQJzrNfWB5v5ztXhpKAjMLHWjXVyyWRVNoQj9DZuMWLOM1lG8-FG';
+            const baseUrl = `https://script.google.com/macros/s/${AKfycbz-yDi7rAwBFeiHAQJzrNfWB5v5ztXhpKAjMLHWjXVyyWRVNoQj9DZuMWLOM1lG8-FG}/exec`;
+            
+            const jsonData = encodeURIComponent(JSON.stringify(formObject));
+            const url = `${baseUrl}?action=appendData&data=${jsonData}&callback=handleResponse`;
             
             console.log('Sending data to:', url);
-            fetch(url, {
-                method: 'POST',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'text/plain',
-                },
-                body: JSON.stringify({ data: formObject })
-            })
-            .then(response => response.text())
-            .then(text => {
-                console.log('Response:', text);
-                return JSON.parse(text);
-            })
-            .then(data => {
-                if (data.success) {
-                    console.log('Data submitted successfully');
-                    sessionStorage.setItem('formData', JSON.stringify(formObject));
-                    window.location.href = 'step1.html';
-                } else {
-                    throw new Error('Failed to submit data');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            });
+
+            // Create a new script element
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
         } else {
             console.log('Form is not valid');
         }
     });
 });
+
+// Callback function
+function handleResponse(response) {
+    if (response.success) {
+        console.log('Data submitted successfully');
+        sessionStorage.setItem('formData', JSON.stringify(formObject));
+        window.location.href = 'step1.html';
+    } else {
+        console.error('Failed to submit data');
+        alert('An error occurred. Please try again.');
+    }
+}
 </script>
 </body>
 </html>
