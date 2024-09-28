@@ -7,31 +7,42 @@
   </head>
   <body>
     <h1>Kewpie Dashboard</h1>
-    <div id="dataDisplay"></div>
+
+    <div id="sheet1"></div>
+    <br />
+    <div id="sheet2"></div>
 
     <script>
       const deployKey = 'AKfycbyYAOQhFMsJcQF2wXEl_rxob-UEzgvawvCA_zlGzNpu0VRw3A1ksHMhJiNWa6pt3vAn'
       const url = `https://script.google.com/macros/s/${deployKey}/exec`
+
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          let html = '<table border="1"><tr>'
-          const keys = Object.keys(data[0])
-          keys.forEach((key) => {
-            html += `<th>${key}</th>`
-          })
-          html += '</tr>'
+          function generateTable(sheetData, sheetName) {
+            let html = `<h2>${sheetName}</h2><table border="1"><tr>`
+            const keys = Object.keys(sheetData[0])
 
-          data.forEach((item) => {
-            html += '<tr>'
             keys.forEach((key) => {
-              html += `<td>${item[key]}</td>`
+              html += `<th>${key}</th>`
             })
             html += '</tr>'
-          })
 
-          html += '</table>'
-          document.getElementById('dataDisplay').innerHTML = html
+            sheetData.forEach((item) => {
+              html += '<tr>'
+              keys.forEach((key) => {
+                html += `<td>${item[key]}</td>`
+              })
+              html += '</tr>'
+            })
+
+            html += '</table>'
+            return html
+          }
+
+          document.getElementById('sheet1').innerHTML = generateTable(data.sheet1, 'Sheet1')
+
+          document.getElementById('sheet2').innerHTML = generateTable(data.sheet2, 'Sheet2')
         })
         .catch((error) => console.error('Error fetching data:', error))
     </script>

@@ -28,7 +28,7 @@
       <img src="./img/sink.png" class="bg-sink" />
     </div>
   </body>
-
+  <script src="./script/save-data.js"></script>
   <script>
     const activeAnimation = document.getElementById('activeAnimation')
     const activeBowlImg = document.getElementById('activeBowl')
@@ -44,6 +44,7 @@
 
     if (formData) {
       formData = JSON.parse(formData)
+      saveData(formData)
       const imageId = formData['bowl']
 
       if (formData['menu']) {
