@@ -589,6 +589,9 @@ body, html {
  ####  #    # #####  ###### #    # ####### 
 */
 .page-order2 {
+    .page>.wrapper { 
+        padding: 0;
+    }
     .bg-shelf { 
         position: absolute;
         left: 0;
