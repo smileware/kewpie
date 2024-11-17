@@ -14,54 +14,36 @@
         
         <div class="shelf">
             <div class="shelf-item">
-                <img src="./img/bowl-1.png" id="bowl-1" data-name="หอม อร่อย ลงตัว" class="animate__animated animate__fadeInLeft" />
-                <img src="./img/bowl-2.png" id="bowl-2" data-name="จี๊ดจ๊าดโดนใจ" class="animate__animated animate__fadeInLeft" />
-            </div>
-            <div class="shelf-item">
-                <img src="./img/bowl-3.png" id="bowl-3" data-name="อร่อยเด่น มีสไตล์" class="animate__animated animate__fadeInLeft" />
-                <img src="./img/bowl-4.png" id="bowl-4" data-name="เข้มข้น แบบจัดเต็ม" class="animate__animated animate__fadeInLeft" />
-            </div>
-            <div class="shelf-item">
-                <img src="./img/bowl-5.png" id="bowl-5" data-name="เติมเต็มความสดชื่น" class="animate__animated animate__fadeInLeft" />
-                <img src="./img/bowl-6.png" id="bowl-6" data-name="สดใส สายไดเอท" class="animate__animated animate__fadeInLeft" />
-            </div>
-            <div class="shelf-item">
-                <img src="./img/bowl-7.png" id="bowl-7" data-name="อร่อยเต็มรสเครื่องเทศ" class="animate__animated animate__fadeInLeft" />
-                <img src="./img/bowl-8.png" id="bowl-8" data-name="หอมละมุน มีระดับ" class="animate__animated animate__fadeInLeft" />
+                <img src="./img/bowl-1.png" id="bowl-1" data-name="ข้าว" class="animate__animated animate__fadeInLeft" />
+                <img src="./img/bowl-2.png" id="bowl-2" data-name="เส้น" class="animate__animated animate__fadeInLeft" />
+                <img src="./img/bowl-3.png" id="bowl-3" data-name="แป้ง" class="animate__animated animate__fadeInLeft" />
             </div>
         </div>
-
-        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
-        <img src="" id="activeBowl" class="active-bowl">
-
         <button class="btn-submit" onclick="goToNextPage()">
             <img src="./img/next-btn.png" />
         </button>
+        
+        <img src="" id="activeBowl" class="active-bowl">
+
 
     </div>
     <img src="./img/grid.png"  class="bg-grid" />
     <img src="./img/sink.png"  class="bg-sink" />
 </body>
 <script>
-    const images = document.querySelectorAll('.shelf img');
+    const images = document.querySelectorAll('.shelf-item img');
     const activeBowlImg = document.getElementById('activeBowl'); // The target bowl image
-    const activeEffect = document.getElementById('activeEffect'); // The animation effect
 
     images.forEach(function(image) {
         image.addEventListener('click', function() {
             const imageId = this.id;
 
-            const newSrc = `./img/${imageId}-active.png`;
+            const newSrc = `./img/${imageId}-active.gif`;
             activeBowlImg.src = newSrc;
             activeBowlImg.dataset.name = this.dataset.name;
             activeBowlImg.dataset.id = imageId;
-
-            if (newSrc) {
-                activeEffect.style.display = 'block'; // Show animation effect
-            }
         });
     });
-
 
     function goToNextPage() {
         const requiredItem = sessionStorage.getItem('formData');
@@ -75,11 +57,12 @@
                     formData = JSON.parse(formData);
                     formData["รสชาติ"] = activeBowlImg.dataset.name;
                     formData["bowl"] = activeBowlImg.dataset.id;
+                    console.log(activeBowlImg);
                     sessionStorage.setItem('formData', JSON.stringify(formData)); 
                     window.location.href = 'step2.html';
                 }
             }else { 
-                alert("กรุณาเลือกรสชาติน้ำสลัดที่คุณชอบ");
+                alert("กรุณาเลือกสไตล์อาหารที่คุณชอบ");
             }
         }
     }

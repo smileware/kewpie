@@ -342,13 +342,13 @@ body, html {
         width: 100%;
     }
     .shelf { 
-        max-width: 400px;
-        height: 400px;
-        width: 500px;
-        background-image: url(./img/shelf.png);
+        max-width: 100%;
+        width: 100%;
+        background-image: url(./img/shelve.png);
         background-size: 100%;
         background-repeat: no-repeat;
-        margin: 80px auto 0;
+        background-position: 0 235px;
+        margin: 0 auto 0;
     }
     #bowl-1 { 
         animation-delay: 0ms;
@@ -377,32 +377,9 @@ body, html {
     .shelf-item {
         display: flex;
         justify-content: space-evenly;
-        &:nth-child(1) { 
-            top: -69px;
-            position: relative;
-        }
-        &:nth-child(2) { 
-            top: -35px;
-            position: relative;
-        }
-        &:nth-child(3) { 
-            top: -12px;
-            position: relative;
-        }
-        &:nth-child(4) { 
-            top: 10px;
-            position: relative;
-        }
-        &:nth-child(4) { 
-            // img {
-            //     &:first-child { 
-            //         width: 170px;
-            //         margin-left: -10px;
-            //     }
-            // }
-        }
+        position: relative;
         img { 
-            width: 145px
+            width: 33.33%;
         }
     } 
     .btn-submit { 
@@ -410,7 +387,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 80px;
+        bottom: 20px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
@@ -428,99 +405,38 @@ body, html {
         bottom: 300px;
         display: none;
     }
+    @media only screen and (max-width: 430px) {
+        .btn-submit { 
+            bottom: 50px;
+        }
+    }
     @media only screen and (max-width: 420px) {
         > .wrapper { 
             padding-top: 10px;
         }
         .shelf { 
-            max-width: 370px;
-            height: 300px;
-            width: 400px;
-            margin: 35px auto 0;
+            background-position: 0 225px;
         }
-        .shelf-item {
-            &:nth-child(1) { 
-                top: -48px;
-                position: relative;
-            }
-            &:nth-child(2) { 
-                top: 0px;
-                position: relative;
-            }
-            &:nth-child(3) { 
-                top: 35px;
-                position: relative;
-            }
-            &:nth-child(4) { 
-                top: 75px;
-                position: relative;
-            }
-            img { 
-                width: 100px
-            }
-        } 
         .active-bowl,.active-effect { 
             width: 140px;
-            bottom: 135px;
+            bottom: 145px;
         }
-        .active-effect { 
-            width: 80px;
-            bottom: 260px;
-            display: none;
-        }
-
         .btn-submit { 
-            bottom: 30px;
+            bottom: 20px;
         }
     }
 
     @media only screen and (max-width: 390px) {
-        > .wrapper { 
-            padding-top: 10px;
-        }
         .shelf { 
-            max-width: 300px;
-            height: 300px;
-            width: 400px;
-            margin: 35px auto 0;
+            background-position: 0 205px;
         }
-        .shelf-item {
-            &:nth-child(1) { 
-                top: -48px;
-                position: relative;
-            }
-            &:nth-child(2) { 
-                top: -20px;
-                position: relative;
-            }
-            &:nth-child(3) { 
-                top: 5px;
-                position: relative;
-            }
-            &:nth-child(4) { 
-                top: 25px;
-                position: relative;
-            }
-            img { 
-                width: 100px
-            }
-        } 
+        .bg-sink { 
+            bottom: -40px;
+        }
         .active-bowl,.active-effect { 
-            width: 140px;
-            bottom: 175px;
-        }
-        .active-effect { 
-            width: 80px;
-            bottom: 260px;
-            display: none;
-        }
-
-        .btn-submit { 
-            bottom: 80px;
+            bottom: 105px;
         }
     }
-
-
 }
 
 /*
@@ -571,66 +487,36 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 80px;
+        bottom: 20px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
         }
     }
-    .active-animation { 
-        width: 200px;
-        position: absolute;
-        left: 50%;
-        bottom: 270px;
-        transform: translate(-50%, 0);
-    }
-    .active-bowl,.active-effect { 
+    .active-bowl { 
         width: 200px;
         position: absolute;
         left: 50%;
         bottom: 190px;
         transform: translate(-50%, 0);
     }
-    .active-effect { 
-        width: 80px;
-        bottom: 300px;
-        display: none;
+    @media only screen and (max-width: 430px) {
+        .btn-submit { 
+            bottom: 60px;
+        }
     }
     @media only screen and (max-width: 420px) {
-        .active-bowl,.active-effect { 
+        .active-bowl { 
+            width: 180px;
             bottom: 150px;
         }
-        .active-animation { 
-            width: 180px;
-            bottom: 250px;
-        }
-        .active-effect { 
-            width: 100px;
-            bottom: 300px;
-            display: none;
-        }
-
         .btn-submit { 
-            bottom: 40px;
+            bottom: 20px;
         }
     }
     @media only screen and (max-width: 375px) {
-        .active-bowl,.active-effect { 
+        .active-bowl { 
             width: 140px;
-            bottom: 190px;
-        }
-        .active-animation { 
-            width: 140px;
-            bottom: 250px;
-        }
-        .active-effect { 
-            width: 80px;
-            bottom: 260px;
-            display: none;
-        }
-
-        .btn-submit { 
-            bottom: 80px;
         }
     }
 }
@@ -703,12 +589,6 @@ body, html {
  ####  #    # #####  ###### #    # ####### 
 */
 .page-order2 {
-    .wrapper {
-        padding-top: 20px;
-    }
-    .logo { 
-        width: 80px;
-    }
     .bg-shelf { 
         position: absolute;
         left: 0;
@@ -725,14 +605,6 @@ body, html {
     }
     .img-text { 
         width: 100%;
-    }
-    .active-animation { 
-        width: 200px;
-        position: absolute;
-        left: 50%;
-        bottom: 245px;
-        transform: translate(-50%, 0);
-        z-index: 1;
     }
     .active-bowl,.active-effect { 
         width: 200px;
@@ -762,10 +634,6 @@ body, html {
         }
     }
     @media only screen and (max-width: 430px) {
-        .active-animation { 
-            bottom: 225px;
-            width: 170px;
-        }
         .active-bowl,.active-effect { 
             width: 170px;
             bottom: 150px;
@@ -776,10 +644,9 @@ body, html {
             display: none;
         }
     }
-    @media only screen and (max-width: 400px) {
-        .active-animation { 
-            bottom: 195px;
-            width: 120px;
+    @media only screen and (max-width: 420px) {
+        .signage-text { 
+            width: 80%;
         }
         .active-bowl,.active-effect { 
             width: 140px;
@@ -942,15 +809,7 @@ body, html {
     #      # #   ## #    # #      #       
     #      # #    # #    # ###### ####### 
 */
-
 .page-final2 {
-    .img-text { 
-        width: 100%;
-    }
-    .inner {
-        position: relative;
-        padding: 0 30px;
-    }
     .bg-sink { 
         position: absolute;
         left: 0;
@@ -963,74 +822,24 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: -40px;
+        bottom: 50px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
         }
     }
-
     .active-text { 
         width: 100%;
-        margin-top: 20px;
     }
-    .active-bowl,
-    .active-effect { 
+    .active-bowl{ 
         width: 100%;
         position: absolute;
-        left: 50%;
-        bottom: 150px;
-        transform: translate(-50%, 0);
-    }
-    .active-effect { 
-        width: 160px;
-        bottom:360px;
-    }
-
-    .btn-submit { 
-        background: rgba(0, 0, 0, 0);
-        border: none;
-        position: absolute;
-        left: 50%;
-        bottom: 80px;
-        transform: translate(-50%, 0);
-        img { 
-            width: 280px;
-        }
+        left: 0%;
+        bottom: 20px;
     }
     @media only screen and (max-width: 420px) {
-        .active-bowl,
-        .active-effect { 
-            bottom: 120px;
-        }
-        .active-effect { 
-            width: 110px;
-            bottom: 300px;
-        }
-    
         .btn-submit { 
-            bottom: 40px;
-        }
-    }
-    @media only screen and (max-width: 375px) {
-        .logo { 
-            width: 100px;
-        }
-        .active-bowl,
-        .active-effect { 
-            width: calc(100% - 90px);
-            position: absolute;
-            left: 50%;
-            bottom: 170px;
-            transform: translate(-50%, 0);
-        }
-        .active-effect { 
-            width: 110px;
-            bottom: 340px;
-        }
-    
-        .btn-submit { 
-            bottom: 80px;
+            bottom: 20px;
         }
     }
 }
@@ -1046,6 +855,9 @@ body, html {
     #      # #    # #    # ######  #####  
 */
 .page-final3 {
+    .logo { 
+        width: 100px;
+    }
     .bg-sink { 
         position: absolute;
         left: 0;
@@ -1053,33 +865,15 @@ body, html {
         width: 100%;
         max-height: 220px;
     }
-    .btn-submit { 
-        background: rgba(0, 0, 0, 0);
-        border: none;
-        position: absolute;
-        left: 50%;
-        bottom: -40px;
-        transform: translate(-50%, 0);
-        img { 
-            width: 280px;
-        }
-    }
     .active-text { 
         width: 100%;
     }
-    .active-bowl,
-    .active-effect { 
+    .active-bowl { 
         width: 100%;
         position: absolute;
-        left: 50%;
-        bottom: 150px;
-        transform: translate(-50%, 0);
+        bottom: 20px;
+        left: 0%;
     }
-    .active-effect { 
-        width: 160px;
-        bottom: 300px;
-    }
-
     .btn-submit { 
         background: rgba(0, 0, 0, 0);
         border: none;
@@ -1091,38 +885,20 @@ body, html {
             width: 280px;
         }
     }
-
-    @media only screen and (max-width: 440px){
-        .logo { 
-            width: 150px;
-        }
-    }
-    @media only screen and (max-width: 420px){
-        .logo { 
-            width: 100px;
-        }
-        .active-bowl,
-        .active-effect { 
-            width: calc(100% - 30px);
-            bottom: 140px;
-            transform: traslate(-50%, 0);
-        }
-        .btn-submit { 
-            bottom: 40px;
-        }
-    }
-    @media only screen and (max-width: 375px) {
-        .logo { 
-            width: 100px;
-        }
-        .active-bowl,
-        .active-effect { 
-            width: calc(100% - 80px);
-            bottom: 160px;
-            transform: traslate(-50%, 0);
+    @media only screen and (max-width: 430px){
+        .active-bowl { 
+            bottom: 80px;
         }
         .btn-submit { 
             bottom: 80px;
+        }
+    }
+    @media only screen and (max-width: 420px) {
+        .active-bowl { 
+            bottom: 40px;
+        }
+        .btn-submit { 
+            bottom: 40px;
         }
     }
 }

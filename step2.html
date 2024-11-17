@@ -18,72 +18,48 @@
             <img src="./img/menu-2.png" id="menu-2" class="animate__animated animate__slow animate__bounceIn" />
             <img src="./img/menu-3.png" id="menu-3" class="animate__animated animate__slow animate__bounceIn" />
         </div>
-
-        <img src="./img/bowl-animated.gif" id="activeEffect" class="active-effect">
-        <img src="" id="activeAnimation" class="active-animation">
         <img src="" id="activeBowl" class="active-bowl">
-
         <button class="btn-submit" onclick="goToNextPage()">
             <img src="./img/next-btn.png" />
         </button>
-
     </div>
     <img src="./img/sink-grid.png"  class="bg-sink" />
 </body>
 <script>
-    const activeAnimation = document.getElementById('activeAnimation');
     const activeBowlImg = document.getElementById('activeBowl');
-    const activeEffect = document.getElementById('activeEffect'); 
     let formData = sessionStorage.getItem('formData');
     let activeBowlNum, activeMenuNum;
-    
-    // TODO: DELETE THIS
+    let currentMenu;
     console.log(formData);
-
     if (formData) {
         formData = JSON.parse(formData);
-        const imageId = formData['bowl'];
-
+        currentMenu = formData['bowl'];
+        
         if(formData['menu']){
             
             activeBowlNum = formData['bowl'];
             activeMenuNum = formData['menu'];
-            activeBowlImg.src = `./img/${activeBowlNum}-active.png`;
-            activeAnimation.src = `./img/${activeMenuNum}-animation.gif`;
-
+            activeBowlImg.src = `./img/${activeBowlNum}-${activeMenuNum}-animation.gif`;
+            // Set animation to empty
+            var activeMenu = document.getElementById(activeMenuNum);
+                activeMenu.src = `./img/${activeMenuNum}-empty.png`;
         }else { 
-            if( imageId ) {
-                const newSrc = `./img/${imageId}-active.png`;
-                activeBowlImg.src = newSrc;
-                activeBowlNum = formData['bowl'];
-                if (newSrc) {
-                    activeEffect.style.display = 'block'; 
-                }
-
-            }else { 
+            if( !currentMenu ) {
                 window.location.href = 'step1.html';
             }
         }
-        
     }else { 
         window.location.href = 'intro-form.html';
     }
-
 
     const images = document.querySelectorAll('.menu-wrapper img');
     images.forEach(function(image) {
         image.addEventListener('click', function() {
             const imageId = this.id; // = menu-1, menu-2, menu-3;
+            const newSrc = `./img/${currentMenu}-${imageId}-animation.gif`;
 
-            const newSrc = `./img/${imageId}-animation.gif`;
-
-            activeAnimation.src = newSrc;
-            activeAnimation.dataset.id = imageId;
-
-            if (newSrc) {
-                activeEffect.style.display = 'none';
-            }
-
+            activeBowlImg.src = newSrc;
+           
             images.forEach(function(img) {
                 img.src = `./img/${img.id}.png`;
             });
@@ -101,7 +77,6 @@
 
         let requiredItem = sessionStorage.getItem('formData');
             requiredItem = JSON.parse(requiredItem);
-            console.log(requiredItem);
             if (requiredItem['menu']) {
                 window.location.href = 'order2.html';
             }else { 
