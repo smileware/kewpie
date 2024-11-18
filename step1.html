@@ -36,12 +36,22 @@
 
     images.forEach(function(image) {
         image.addEventListener('click', function() {
-            const imageId = this.id;
 
+            images.forEach(img => {
+                if (img === this) {
+                    img.src = '';
+                } else {
+                    const imageId = img.id;
+                    img.src = `./img/${imageId}.png`;
+                }
+            });
+
+            const imageId = this.id;
             const newSrc = `./img/${imageId}-active.gif`;
             activeBowlImg.src = newSrc;
             activeBowlImg.dataset.name = this.dataset.name;
             activeBowlImg.dataset.id = imageId;
+
         });
     });
 
