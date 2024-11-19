@@ -39,10 +39,9 @@
 
             images.forEach(img => {
                 if (img === this) {
-                    img.src = '';
+                    img.classList.add('hide');
                 } else {
-                    const imageId = img.id;
-                    img.src = `./img/${imageId}.png`;
+                    img.classList.remove('hide');
                 }
             });
 

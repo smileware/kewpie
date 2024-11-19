@@ -51,6 +51,11 @@ body, html {
     position: relative;
 }
 
+.hide {
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 .page { 
     > .wrapper { 
         text-align: center;
@@ -100,9 +105,9 @@ body, html {
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -20px;
         width: 100%;
-        max-height: 220px;
+        // max-height: 220px;
     }
     h3 { 
         font-size: 25px;
@@ -279,7 +284,7 @@ body, html {
         bottom: 0;
         width: 100%;
         // max-height: 220px;
-        bottom: -35px;
+        // bottom: -35px;
     }
     .spoon { 
         position: absolute;
@@ -327,11 +332,11 @@ body, html {
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: 0;
+        bottom: -10px;
         width: 100%;
         object-fit: cover;
         object-position: top;
-        max-height: 220px;
+        // max-height: 220px;
     }
     .bg-grid { 
         position: absolute;
@@ -415,6 +420,9 @@ body, html {
         .btn-submit { 
             bottom: 50px;
         }
+        .active-bowl { 
+            bottom: 175px;
+        }
     }
     @media only screen and (max-width: 420px) {
         > .wrapper { 
@@ -437,10 +445,10 @@ body, html {
             background-position: 0 205px;
         }
         .bg-sink { 
-            bottom: -40px;
+            // bottom: -40px;
         }
         .active-bowl,.active-effect { 
-            bottom: 105px;
+            bottom: 135px;
         }
     }
 }
@@ -512,21 +520,28 @@ body, html {
     }
     @media only screen and (max-width: 430px) {
         .btn-submit { 
-            bottom: 80px;
+            bottom: 30px;
+        }
+        .active-bowl { 
+            bottom: 155px;
         }
     }
     @media only screen and (max-width: 420px) {
         .active-bowl { 
             width: 180px;
-            bottom: 150px;
+            bottom: 130px;
         }
         .btn-submit { 
-            bottom: 50px;
+            bottom: 10px;
         }
     }
     @media only screen and (max-width: 375px) {
         .active-bowl { 
             width: 140px;
+            bottom: 125px;
+        }
+        .btn-submit { 
+            bottom: 10px;
         }
     }
 }
@@ -834,9 +849,8 @@ body, html {
     .bg-sink { 
         position: absolute;
         left: 0;
-        bottom: 0px;
+        bottom: -130px;
         width: 100%;
-        max-height: 220px;
     }
     .btn-submit { 
         background: rgba(0, 0, 0, 0);
