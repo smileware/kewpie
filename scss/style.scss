@@ -416,6 +416,14 @@ body, html {
         bottom: 300px;
         display: none;
     }
+    @media only screen and (max-width: 460px) {
+        .active-bowl { 
+            bottom: 175px;
+        }
+        .btn-submit { 
+            bottom: 60px;
+        }
+    }
     @media only screen and (max-width: 430px) {
         .btn-submit { 
             bottom: 50px;
@@ -517,6 +525,14 @@ body, html {
         left: 50%;
         bottom: 190px;
         transform: translate(-50%, 0);
+    }
+    @media only screen and (max-width: 460px) {
+        .btn-submit { 
+            bottom: 35px;
+        }
+        .active-bowl { 
+            bottom: 165px;
+        }
     }
     @media only screen and (max-width: 430px) {
         .btn-submit { 
@@ -915,7 +931,7 @@ body, html {
         border: none;
         position: absolute;
         left: 50%;
-        bottom: 80px;
+        bottom: 50px;
         transform: translate(-50%, 0);
         img { 
             width: 280px;
