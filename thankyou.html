@@ -7,12 +7,32 @@
     <title>Kewpie Much & More เพราะคิวพีเป็นได้มากกว่าน้ำสลัด</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./animate.css" />
+        <style>
+      .back-button {
+        position: fixed;
+        bottom: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+        z-index: 100;
+        border: none;
+        background: none;
+        padding: 0;
+      }
+      .back-button img {
+        width: 120px;
+        height: auto;
+      }
+    </style>
   </head>
   <body class="page page-thankyou" onclick="goToNextPage()">
     <div class="wrapper">
       <img src="./img/logo.png" class="logo animate__animated animate__bounceIn" />
       <img src="./img/text-9.png" class="img-text animate__animated animate__bounceIn" />
     </div>
+     <button class="back-button" onclick="window.location.href='https://smileware.github.io/kewpie/'">
+      <img src="./img/back-button.png" alt="Back" />
+    </button>
   </body>
   <img src="./img/end-table.png" class="bg-sink" />
   <script src="./script/save-data.js"></script>
